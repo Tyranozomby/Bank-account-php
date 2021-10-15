@@ -20,7 +20,7 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
     if (!file_exists("logs.csv")) {
         $f = fopen("logs.csv", 'w');
         $array = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
-        fputcsv($f, $array);
+        fputcsv($f, $array, ";");
         fclose($f);
     }
 
@@ -35,7 +35,7 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
 
     // Rempli les logs avec les valeurs nécessaires
     $array = array($_SERVER['REMOTE_ADDR'], time(), $montant, $capital, $nombre_mois, $taux);
-    fputcsv($f, $array);
+    fputcsv($f, $array, ";");
     fclose($f);
 
 } else {
