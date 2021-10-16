@@ -6,11 +6,12 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
     // Crée les variables $capital, $nombre_mois, $taux en vérifiant que ce sont bien des nombres sinon redirige
     foreach ($_GET as $k => $v) {
         if (is_numeric($v)) {
-            $$k = (int)$v;
+            $$k = $v;
         } else {
             redirect();
         }
     }
+    $taux /= 100;
 
     // Formule de calcul du montant
     $montant = ($capital * ($taux / 12)) / (1 - (1 + ($taux / 12)) ** (-$nombre_mois));
@@ -47,3 +48,13 @@ function redirect()
     header("Location: simulation.php");
     exit();
 }
+
+?>
+
+<!--Formulaire de test-->
+<form action="" method="get">
+    <input type="number" name="capital" step="any" min="0" placeholder="capital"><br/>
+    <input type="number" name="nombre_mois" step="any" min="0" placeholder="nombre de mois"><br/>
+    <input type="number" name="taux" step="any" min="0" placeholder="taux">%<br/>
+    <button type="submit">Submit</button>
+</form>
