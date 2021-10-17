@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['login'], $_POST['password'])){
+if(isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POST['password'] != ""){
 
     if (file_exists("admin_pass.csv")){
         $file = "admin_pass.csv";
