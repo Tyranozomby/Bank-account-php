@@ -11,9 +11,9 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
             if ($data[0] == $_POST['login']) {
 
                 if (hash('sha256', $_POST['password']) == $data[1]) {
-                    echo "good password";
+                    echo "good password"; //todo redirection vers admin.php
                 } else {
-                    echo "wrong password";
+                    echo "wrong password"; //todo redirection vers adminlogin.php?stat=1
                 }
             }
         }

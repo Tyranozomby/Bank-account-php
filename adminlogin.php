@@ -14,6 +14,11 @@
     <?php
     if (isset($_GET['id'])) {
         switch ($_GET['id']) {
+            //todo juste 1 et 2
+            // 1 pour erreure
+            // 2 pour déco
+            // et renomme id en "stat" pour statut
+
             case "1":
                 echo "<p class='info' style='color: red'>Erreur identifiant</p>";
                 break;

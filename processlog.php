@@ -2,7 +2,7 @@
 
 session_start();
 if ($_SESSION["admin"] != "admin") {
-    header("Location: adminlogin.php");
+    header("Location: adminlogin.php?stat=1");
 }
 
 if (isset($_GET["archiver"])) {

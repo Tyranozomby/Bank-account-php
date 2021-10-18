@@ -1,9 +1,12 @@
 <?php
 
+//todo quand meme séparer en deux fichiers et utiliser un require
+
 // Vérifie l'existence des variables nécessaires au calcul sinon redirige
 if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
 
     // Crée les variables $capital, $nombre_mois, $taux en vérifiant que ce sont bien des nombres sinon redirige
+    //todo arette d'utiliser ca c'est pas bien
     foreach ($_GET as $k => $v) {
         if (is_numeric($v)) {
             $$k = $v;
@@ -11,11 +14,14 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
             redirect();
         }
     }
+
     $taux /= 100;
 
     // Formule de calcul du montant
     $montant = ($capital * ($taux / 12)) / (1 - (1 + ($taux / 12)) ** (-$nombre_mois));
     $montant = round($montant, 2);
+
+    //todo bouger création de log dans une fonction
 
     // Crée le fichier et ajoute les colonnes s'il n'existe pas
     if (!file_exists("logs.csv")) {
@@ -35,6 +41,7 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
     }
 
     // Rempli les logs avec les valeurs nécessaires
+    // todo j'ai un pb avec ca ca marche pas chez moi
     $array = array($_SERVER['REMOTE_ADDR'], time(), $montant, $capital, $nombre_mois, $taux);
     fputcsv($f, $array, ";");
     fclose($f);
@@ -44,7 +51,7 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
 // Fonction de redirection vers lui-même lorsqu'il y a une erreur dans les valeurs
 function redirect()
 {
-    header("Location: simulation.php?id=1");
+    header("Location: simulation.php?stat=1");
     exit();
 }
 
@@ -65,7 +72,7 @@ function redirect()
     <h1>Prêt Bancaire</h1>
 
     <?php
-    if (isset($_GET["id"]) and $_GET["id"] == 1) {
+    if (isset($_GET["stat"]) and $_GET["stat"] == 1) {
         echo "<p class='info' style='color: red'>Erreur dans les champs</p>";
     }
     ?>

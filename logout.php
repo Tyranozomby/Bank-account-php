@@ -2,4 +2,4 @@
 session_start();
 session_destroy();
 
-header("Location: adminlogin.php");
+header("Location: adminlogin.php?stat=2");
