@@ -11,16 +11,21 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
             if ($data[0] == $_POST['login']) {
 
                 if (hash('sha256', $_POST['password']) == $data[1]) {
-                    echo "good password"; //todo redirection vers admin.php
+                    header('Location: admin.php');
+                    fclose($fp);
+                    exit();
                 } else {
-                    echo "wrong password"; //todo redirection vers adminlogin.php?stat=1
+                    header('Location: formulaire.php?id=1');
+                    fclose($fp);
+                    exit();
                 }
             }
         }
+        header('Location: formulaire.php?id=1');
         fclose($fp);
     } else {
         echo "Le fichier <strong>admin_pass.csv</strong> n'existe pas !";
     }
 } else {
-    echo "veuillez compléter tous les champs";
+    header('Location: formulaire.php?id=2');
 }
