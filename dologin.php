@@ -15,17 +15,17 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
                     fclose($fp);
                     exit();
                 } else {
-                    header('Location: formulaire.php?id=1');
+                    header('Location: adminlogin.php?id=1');
                     fclose($fp);
                     exit();
                 }
             }
         }
-        header('Location: formulaire.php?id=1');
+        header('Location: adminlogin.php?id=1');
         fclose($fp);
     } else {
         echo "Le fichier <strong>admin_pass.csv</strong> n'existe pas !";
     }
 } else {
-    header('Location: formulaire.php?id=2');
+    header('Location: adminlogin.php?id=2');
 }
