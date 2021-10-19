@@ -1,61 +1,12 @@
 <?php
 
-//todo quand meme séparer en deux fichiers et utiliser un require
+require "calcul.php";
 
-// Vérifie l'existence des variables nécessaires au calcul sinon redirige
-if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
-
-    // Crée les variables $capital, $nombre_mois, $taux en vérifiant que ce sont bien des nombres sinon redirige
-    //todo arette d'utiliser ca c'est pas bien
-    foreach ($_GET as $k => $v) {
-        if (is_numeric($v)) {
-            $$k = $v;
-        } else {
-            redirect();
-        }
-    }
-
-
-    // Formule de calcul du montant
-    $montant = ($capital * ($taux/100 / 12)) / (1 - (1 + ($taux/100 / 12)) ** (-$nombre_mois));
-    $montant = round($montant, 2);
-
-    //todo bouger création de log dans une fonction
-
-    // Crée le fichier et ajoute les colonnes s'il n'existe pas
-    if (!file_exists("logs.csv")) {
-        $f = fopen("logs.csv", 'w');
-        $array = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
-        fputcsv($f, $array, ";");
-        fclose($f);
-    }
-
-    // Essaye d'ouvrir le fichier et boucle tant qu'il n'y arrive pas (c'est qu'il est utilisé par un autre utilisateur)
-    $f = fopen("logs.csv", 'a');
-    if ($f == false) {
-        while ($f == false) {
-            usleep(10);
-            $f = fopen("logs.csv", 'a');
-        }
-    }
-
-    // Rempli les logs avec les valeurs nécessaires
-    // todo j'ai un pb avec ca ca marche pas chez moi
-    $array = array($_SERVER['REMOTE_ADDR'], time(), $montant, $capital, $nombre_mois, $taux);
-    fputcsv($f, $array, ";");
-    fclose($f);
-
+$montant = calcul();
+if ($montant == false) {
+    unset($montant);
 }
-
-// Fonction de redirection vers lui-même lorsqu'il y a une erreur dans les valeurs
-function redirect()
-{
-    header("Location: simulation.php?stat=1");
-    exit();
-}
-
 ?>
-
 
 <!doctype html>
 <html lang="fr">
@@ -87,13 +38,13 @@ function redirect()
             <div class="inputs">
                 <?php
                 if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
-                    echo "<input type='number' id='capital' name='capital' min='0' value='$capital' required>";
-                    echo "<input type='number' id='nombre_mois' name='nombre_mois' min='0' value='$nombre_mois' required>";
-                    echo "<input type='number' id='taux' name='taux' step='any' value='$taux' required>";
+                    echo "<input type='number' id='capital' name='capital' min='0' step='any' value='" . $_GET["capital"] . "' required>";
+                    echo "<input type='number' id='nombre_mois' name='nombre_mois' min='0' step='any' value='" . $_GET["nombre_mois"] . "' required>";
+                    echo "<input type='number' id='taux' name='taux' min='0' step='any' value='" . $_GET["taux"] . "' required>";
                 } else {
-                    echo "<input type='number' id='capital' name='capital' min='0'required>";
-                    echo "<input type='number' id='nombre_mois' name='nombre_mois' min='0' required>";
-                    echo "<input type='number' id='taux' name='taux' min='0' required>";
+                    echo "<input type='number' id='capital' name='capital' step='any' min='0' required>";
+                    echo "<input type='number' id='nombre_mois' name='nombre_mois' step='any' min='0' required>";
+                    echo "<input type='number' id='taux' name='taux' step='any' min='0' required>";
                 }
                 ?>
             </div>
@@ -102,7 +53,7 @@ function redirect()
         if (isset($montant)) {
             echo "<p class='result'>Montant : $montant €</p>";
         } else {
-            echo "<br/>";
+            echo "<br/><br/>";
         }
         ?>
         <button type='submit'>Calculer</button>
@@ -110,5 +61,3 @@ function redirect()
 </div>
 </body>
 </html>
-
-
