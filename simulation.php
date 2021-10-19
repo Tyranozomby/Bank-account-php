@@ -15,10 +15,9 @@ if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
         }
     }
 
-    $taux /= 100;
 
     // Formule de calcul du montant
-    $montant = ($capital * ($taux / 12)) / (1 - (1 + ($taux / 12)) ** (-$nombre_mois));
+    $montant = ($capital * ($taux/100 / 12)) / (1 - (1 + ($taux/100 / 12)) ** (-$nombre_mois));
     $montant = round($montant, 2);
 
     //todo bouger création de log dans une fonction
@@ -88,14 +87,13 @@ function redirect()
             <div class="inputs">
                 <?php
                 if (isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
-                    $taux = $taux * 100;
-                    echo "<input type='number' id='capital' name='capital' step='any' min='0' value='$capital' required>";
-                    echo "<input type='number' id='nombre_mois' name='nombre_mois' step='any' min='0' value='$nombre_mois' required>";
-                    echo "<input type='number' id='taux' name='taux' step='any' min='0' value='$taux' required>";
+                    echo "<input type='number' id='capital' name='capital' min='0' value='$capital' required>";
+                    echo "<input type='number' id='nombre_mois' name='nombre_mois' min='0' value='$nombre_mois' required>";
+                    echo "<input type='number' id='taux' name='taux' step='any' value='$taux' required>";
                 } else {
-                    echo "<input type='number' id='capital' name='capital' step='any' min='0'required>";
-                    echo "<input type='number' id='nombre_mois' name='nombre_mois' step='any' min='0' required>";
-                    echo "<input type='number' id='taux' name='taux' step='any' min='0' required>";
+                    echo "<input type='number' id='capital' name='capital' min='0'required>";
+                    echo "<input type='number' id='nombre_mois' name='nombre_mois' min='0' required>";
+                    echo "<input type='number' id='taux' name='taux' min='0' required>";
                 }
                 ?>
             </div>
