@@ -12,8 +12,8 @@
     <h1>Bienvenue</h1>
 
     <?php
-    if (isset($_GET['id'])) {
-        switch ($_GET['id']) {
+    if (isset($_GET['stat'])) {
+        switch ($_GET['stat']) {
             //todo juste 1 et 2
             // 1 pour erreure
             // 2 pour déco
@@ -43,7 +43,7 @@
             </div>
 
             <div class="inputs">
-                <input type='text' id="login" name='login' required>
+                <input type='text' id="login" name='login' autocomplete="false" required>
                 <input type='password' id="password" name='password' required>
             </div>
         </div>
