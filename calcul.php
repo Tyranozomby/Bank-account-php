@@ -1,5 +1,11 @@
 <?php
 
+// 404 si pas accédé via simulation.php
+if (count(get_included_files()) == 1) {
+    http_response_code(404);
+    die();
+}
+
 function calcul(): float|bool
 {
 // Vérifie l'existence des variables nécessaires au calcul sinon redirige
