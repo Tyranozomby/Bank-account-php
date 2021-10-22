@@ -59,7 +59,7 @@ input {
     margin-bottom: 1rem;
 }
 
-button:hover{
+button:hover {
     background: rgba(207, 218, 57, 0.733);
     transition: all .3s;
 }
@@ -101,23 +101,34 @@ button {
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
+
 .result {
     color: limegreen;
     font-weight: 500;
     font-size: 1.2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
-.error{
+
+.error {
     width: 20rem;
     color: rgb(206, 39, 39);
 }
-table{
-    border: medium  solid #6495ed;
-    border-radius: 25px;
-    border-collapse: collapse;
+
+table {
+    border: medium solid #6495ed;
     width: 90%;
     text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    border-spacing: 0;
 }
-thead{
-    font-size: 1.5rem;  
+
+td {
+    border: 2px solid #6495ed;
+
+    padding: 8px;
+}
+
+thead {
+    font-size: 1.5rem;
 }

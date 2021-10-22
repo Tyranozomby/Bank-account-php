@@ -20,10 +20,7 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
         }
         table{
             color: white;
-            border-radius: 20px;
-            border-collapse: separate;
-            overflow: hidden;
-            border-spacing: 0;
+
         }
         
 
@@ -58,7 +55,7 @@ if (file_exists("logs.csv") &&($file = fopen("logs.csv", "r")) !== FALSE) {
 //Création des boutons
 ?>
 <br/>
-<div class="listeboutons" style="margin: 5;">
+<div class="listeboutons" style="margin: 5px;">
     <div class="inputs">
     <a href='processlog.php?archiver'><button >Archiver les logs</button></a> <br/>
     <a href='processlog.php?vider'><button>Vider les logs</button></a><br/>
