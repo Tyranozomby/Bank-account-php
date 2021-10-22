@@ -15,17 +15,17 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
                     $_SESSION["admin"] = "admin";
                     header('Location: admin.php');
                 } else {
-                    header('Location: adminlogin.php?id=1');
+                    header('Location: adminlogin.php?stat=1');
                 }
                 fclose($fp);
                 exit();
             }
         }
-        header('Location: adminlogin.php?id=1');
+        header('Location: adminlogin.php?stat=1');
         fclose($fp);
     } else {
-        header('Location: adminlogin.php?id=1');
+        header('Location: adminlogin.php?stat=1');
     }
 } else {
-    header('Location: adminlogin.php?id=1');
+    header('Location: adminlogin.php?stat=1');
 }
