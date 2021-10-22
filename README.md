@@ -79,7 +79,7 @@ La page affiche l'historique contenu dans `logs.csv` sous forme de tableau
 Elle contient les boutons **archiver** et **vider** qui redirigent vers `processlog.php?archiver` et `processlog.php?vider` respectivement
 
 Elle contient ausi un bouton de déconnexion qui redirige vers `logout.php`
-### processlog.php
+#### processlog.php
 Page servant a faire différentes opérations sur les logs (`logs.csv`)
 
 Elle commence par vérifier si l'utilisateur est admin en vérifiant sir le champ de session `admin` vaut `admin`
