@@ -8,9 +8,9 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
 
         while ($data = fgetcsv($fp, 1024, ";")) {
 
-            if ($data[0] == strip_tags($_POST['login'])) {
+            if ($data[0] == $_POST['login']) {
 
-                if (hash('sha256', strip_tags($_POST['password']) == $data[1])) {
+                if (hash('sha256', strip_tags($_POST['password'])) == $data[1]) {
                     session_start();
                     $_SESSION["admin"] = "admin";
                     header('Location: admin.php');
