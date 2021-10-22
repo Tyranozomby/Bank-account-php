@@ -52,7 +52,7 @@ if ($montant == false) {
         </div>
         <?php
         if (isset($montant)) {
-            echo "<p class='result'>Montant à rembourser (mois) : $montant €</p>";
+            echo "<p class='result'>Montant à rembourser par mois : $montant €</p>";
         } else {
             echo "<br/><br/>";
         }
