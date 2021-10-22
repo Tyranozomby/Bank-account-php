@@ -15,24 +15,37 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 <head>
     <link rel="stylesheet" href="style.css"/>
     <style>
-        button{
-            width:200px;
+        button {
+            width: 200px;
+            margin: 5px;
         }
-        table{
+
+        table {
             color: white;
 
         }
-        
 
-        </style>
+
+        .listeboutons {
+            top:1.5%;
+
+            width: fit-content;
+            display: flex;
+            flex-direction: row;
+            padding: 0.5rem;
+            height: fit-content;
+            position: fixed;
+
+        }
+    </style>
     <title></title>
 </head>
 
 <body>
 
-    <?php
-if (file_exists("logs.csv") &&($file = fopen("logs.csv", "r")) !== FALSE) {
-    echo "<table border ='1' cellpading='4' cellspacing ='4'>";
+<?php
+if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
+    echo "<table>";
     echo "<tr><th>Ip</th> <th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></tr>";
 
     fgetcsv($file, 1000, ";");
@@ -55,12 +68,18 @@ if (file_exists("logs.csv") &&($file = fopen("logs.csv", "r")) !== FALSE) {
 //Création des boutons
 ?>
 <br/>
-<div class="listeboutons" style="margin: 5px;">
-    <div class="inputs">
-    <a href='processlog.php?archiver'><button >Archiver les logs</button></a> <br/>
-    <a href='processlog.php?vider'><button>Vider les logs</button></a><br/>
-    <a href='logout.php'><button>Déconnexion</button></a><br/>
-    </div>
+<div class="listeboutons">
+
+        <a href='processlog.php?archiver'>
+            <button>Archiver les logs</button>
+        </a> <br/>
+        <a href='processlog.php?vider'>
+            <button>Vider les logs</button>
+        </a><br/>
+        <a href='logout.php'>
+            <button>Déconnexion</button>
+        </a><br/>
+
 </div>
 
 </body>
