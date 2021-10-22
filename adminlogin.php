@@ -19,7 +19,7 @@
                 echo "<p class='info' style='color: red'>Erreur identifiant</p>";
                 break;
             case "2":
-                echo "<p class='info' style='color: green'>Déconnecté</p>";
+                echo "<p class='info' style='color: greenyellow'>Déconnecté</p>";
                 break;
         }
     }
