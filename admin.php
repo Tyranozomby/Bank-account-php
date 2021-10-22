@@ -8,11 +8,12 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 
 
 ?>
-
+<!doctype html>
 <html lang="fr">
 <meta charset="utf-8">
 
 <head>
+    <title>Admin</title>
     <link rel="stylesheet" href="style.css"/>
     <style>
         button {
@@ -20,25 +21,16 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
             margin: 5px;
         }
 
-        table {
-            color: white;
-
-        }
-
-
-        .listeboutons {
-            top:1.5%;
-
+        .listeBoutons {
+            top: 1.5%;
             width: fit-content;
             display: flex;
             flex-direction: row;
             padding: 0.5rem;
             height: fit-content;
             position: fixed;
-
         }
     </style>
-    <title></title>
 </head>
 
 <body>
@@ -46,7 +38,7 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 <?php
 if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
     echo "<table>";
-    echo "<tr><th>Ip</th> <th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></tr>";
+    echo "<thead><tr><th>Ip</th> <th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></thead></tr>";
 
     fgetcsv($file, 1000, ";");
     echo "<tr>";
@@ -68,17 +60,17 @@ if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
 //Création des boutons
 ?>
 <br/>
-<div class="listeboutons">
+<div class="listeBoutons">
 
-        <a href='processlog.php?archiver'>
-            <button>Archiver les logs</button>
-        </a> <br/>
-        <a href='processlog.php?vider'>
-            <button>Vider les logs</button>
-        </a><br/>
-        <a href='logout.php'>
-            <button>Déconnexion</button>
-        </a><br/>
+    <a href='processlog.php?archiver'>
+        <button>Archiver les logs</button>
+    </a> <br/>
+    <a href='processlog.php?vider'>
+        <button>Vider les logs</button>
+    </a><br/>
+    <a href='logout.php'>
+        <button>Déconnexion</button>
+    </a><br/>
 
 </div>
 
