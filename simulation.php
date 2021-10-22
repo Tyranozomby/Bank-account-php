@@ -61,11 +61,12 @@ if ($montant == false) {
         <div>
             <br /><br />
             <?php
-             $file = "logs.csv";
-            if (file_exists($file)){
-                echo "<a href='#Logs'>&nbspHistorique&nbsp</a>";
+            $file = "logs.csv";
+            if (file_exists($file)) {
+                echo "<a href='#Logs'>Historique</a>";
             }
-           ?>
+            ?>
+            <a href='readme.html'>Readme</a>
             <link rel="stylesheet" href="stylePopUp.css">
             <div id="Logs" class="modal">
                 <div class="modal_content">
@@ -74,7 +75,7 @@ if ($montant == false) {
                         <div style="height: 400px;">
                             <a href="#" class="modal_close">&times;</a>
                             <?php
-                           
+
                             if (file_exists($file) && $fp = fopen($file, "r")) {
                                 $titre = fgets($fp);
                                 $data = array();
@@ -84,7 +85,7 @@ if ($montant == false) {
 
                                 $datasize = count($data);
 
-                                echo "<table border = '1' cellpadding='8' cellspacing='18'><thead><tr><td>Capital</td><td>Mois</td><td>Taux</td><td>Montant</td></thead></tr><tr>";
+                                echo "<table><thead><tr><td>Capital</td><td>Mois</td><td>Taux</td><td>Montant</td></thead></tr><tr>";
                                 for ($i = 0; $i < 10; $i++) {
                                     if ($datasize - 1  < $i) break;
                                     $ligne = $data[$datasize - 1 - $i];
@@ -98,14 +99,15 @@ if ($montant == false) {
                                 echo "</table>";
                                 fclose($fp);
                             }
-                           
+
                             ?>
                         </div>
-
-
                     </div>
-
                 </div>
+            </div>
+            
+        </div>
+    </div>
 
 </body>
 
