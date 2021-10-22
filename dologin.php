@@ -24,8 +24,8 @@ if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POS
         header('Location: adminlogin.php?id=1');
         fclose($fp);
     } else {
-        echo "Le fichier <strong>admin_pass.csv</strong> n'existe pas !";
+        header('Location: adminlogin.php?id=1');
     }
 } else {
-    header('Location: adminlogin.php?id=2');
+    header('Location: adminlogin.php?id=1');
 }
