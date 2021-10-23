@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="UTF-8">
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="bank-account-php">Bank-account-php</h1>
+<p>Ceci est la documentation de notre projet PHP</p>
+<h2 id="table-des-mati-res">Table des matières</h2>
+<ul>
+<li><a href="#Utilisation">Utilisation</a><ul>
+<li><a href="#Simulation">Simulation</a></li>
+<li><a href="#Partie-Administrateur">Partie Administrateur</a></li>
+</ul>
+</li>
+<li><a href="#Architecture">Architecture</a><ul>
+<li><a href="#Description">Description</a></li>
+<li><a href="#Schéma">Schéma</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="utilisation">Utilisation</h2>
+<h3 id="simulation">Simulation</h3>
+<p>Il suffit d&#39;aller sur la page simulation.php, ou trois champs sont disponibles</p>
+<ul>
+<li><strong>Capital</strong></li>
+<li><strong>Mois</strong></li>
+<li><strong>Taux</strong> (en pourcentage)</li>
+</ul>
+<p>Il faut ensuite cliquer sur le bouton <strong>Calculer</strong> et le résultat s&#39;affichera en dessous du bouton, en vert.</p>
+<p>Pour voir les 10 dernières simulations, il y a un bouton <strong>Historique</strong> en dessous de l&#39;encadré principal. Il permet de
+faire apparaitre un pop-up modal contenant l&#39;historique.</p>
+<h3 id="partie-administrateur">Partie Administrateur</h3>
+<p>Pour se connecter en tant qu&#39;administrateur, il faut aller sur la page <code>adminlogin.php</code>. Il faut ensuite remplir les
+champs <strong>Login</strong> et <strong>Password</strong> et cliquer sur <em>Connexion</em>.</p>
+<p>La page <code>admin.php</code> permet de voir l&#39;historique des transactions effectuées depuis le dernier archivage.</p>
+<p>Elle permet aussi de vider le fichier d&#39;historique (<code>logs.csv</code>)
+ou de l&#39;archiver (c&#39;est-à-dire le renommer en un autre nom de fichier disponible, du type <code>logs.csv.2</code>)</p>
+<p>Un bouton <strong>Déconnexion</strong> est aussi présent</p>
+<h2 id="architecture">Architecture</h2>
+<h3 id="description">Description</h3>
+<p>Si dessous la liste des fichiers php et leur utilité</p>
+<h4 id="simulation-php">simulation.php</h4>
+<p>Page principale qui permet de remplir le formulaire pour la simulation et de consulter l&#39;historique. L&#39;action du
+formulaire est non déportée et les fonctions permettant de réaliser le calcul sont dans <code>calcul.php</code> et importées
+via <code>require</code>
+Les parameters GET utilisés sont</p>
+<ul>
+<li><strong>stat</strong> (pour afficher un message d&#39;erreur)</li>
+<li><strong>capital</strong></li>
+<li><strong>mois</strong></li>
+<li><strong>taux</strong></li>
+</ul>
+<h4 id="calcul-php">calcul.php</h4>
+<p>Contient les fonctions de calcul de prêt et d&#39;écriture dans les logs</p>
+<h4 id="adminlogin-php">adminlogin.php</h4>
+<p>Page de formulaire de connexion administrateur</p>
+<p>Elle utilise le paramètre GET <strong>stat</strong> pour afficher un message d&#39;erreur ou de déconnexion réussie</p>
+<p>Elle envoie les paramètres POST <strong>login</strong> et <strong>password</strong> a la page <code>dologin.php</code> pour réaliser la connexion.</p>
+<h4 id="dologin-php">dologin.php</h4>
+<p>Page qui vérifie les identifiants administrateur</p>
+<p>Elle utilise les paramètres POST <strong>login</strong> et <strong>password</strong> et les compares a ceux stockés dans <code>admin_pass.csv</code>.</p>
+<p>Le mot de passe est hashé en sha256.</p>
+<p>Si la connexion réussie, elle ouvre une session et met le champ de session <code>admin</code> a la valeur <code>admin</code> elle redirige
+vers <code>admin.php</code></p>
+<p>Sinon, elle redirige vers <code>adminlogin.php?stat=1</code></p>
+<h4 id="admin-php">admin.php</h4>
+<p>Page d&#39;administration</p>
+<p>La page vérifie si le champ de session <code>admin</code> vaut bien <code>admin</code> et si non redirige vers <code>adminlogin.php?stat=1</code></p>
+<p>La page affiche l&#39;historique contenu dans <code>logs.csv</code> sous forme de tableau</p>
+<p>Elle contient les boutons <strong>archiver</strong> et <strong>vider</strong> qui redirigent vers <code>processlog.php?archiver</code>
+et <code>processlog.php?vider</code> respectivement</p>
+<p>Elle contient aussi un bouton de déconnexion qui redirige vers <code>logout.php</code></p>
+<h4 id="processlog-php">processlog.php</h4>
+<p>Page servant à faire différentes opérations sur les logs (<code>logs.csv</code>)</p>
+<p>Elle commence par vérifier si l&#39;utilisateur est admin en vérifiant sir le champ de session <code>admin</code> vaut <code>admin</code></p>
+<p>Si ce n&#39;est pas le cas elle redirige vers <code>adminlogin.php?stat=1</code></p>
+<p>Ensuite, si le paramètre GET <strong>archiver</strong> est présent, elle archive les logs ou si le paramètre GET <strong>vider</strong> est
+présent elle les vide.</p>
+<p>C&#39;est expliqué dans la <a href="#Partie-Administrateur">partie Administrateur</a></p>
+<p>Elle redirige ensuite vers <code>admin.php</code></p>
+<h4 id="logout-php">logout.php</h4>
+<p>Page de déconnexion</p>
+<p>Elle détruit la session actuelle et redirige vers <code>adminlogin.php?stat=2</code></p>
+<h4 id="logs-csv">logs.csv</h4>
+<p>Fichier de logs</p>
+<p>Format :
+| Adresse IP du client | Montant | Capital | Nombre de mois | Taux |
+|----------------------|---------|---------|----------------|------|</p>
+<h4 id="admin_pass-csv">admin_pass.csv</h4>
+<p>Fichier contenant les identifiants administrateurs</p>
+<p>Format :
+| Login | Mot de passe hashé en sha256 |
+|-------|------------------------------|</p>
+<h3 id="sch-ma">Schéma</h3>
+<p><img src="architecture.png" alt=""></p>
+</body></html>
