@@ -38,7 +38,7 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 <?php
 if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
     echo "<table>";
-    echo "<thead><tr><th>Ip</th> <th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></thead></tr>";
+    echo "<thead><tr><th>Ip</th><th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></thead></tr>";
 
     fgetcsv($file, 1000, ";");
     echo "<tr>";
@@ -47,9 +47,9 @@ if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
         date_timestamp_set($date, intval($data[1]));
         echo "<td>$data[0]</td>";
         echo "<td>" . date_format($date, 'Y-m-d H:i:s') . "</td>";
-        echo "<td>$data[2]</td>
-        <td>$data[3]</td>
-        <td>$data[4]</td>";
+        echo "<td>$data[2]</td>";
+        echo "<td>$data[3]</td>";
+        echo "<td>$data[4]</td>";
         echo "<td>" . number_format($data[5], 2) . "</td>";
         echo "</tr>";
     }
@@ -59,21 +59,12 @@ if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
 
 //Création des boutons
 ?>
-<br/>
 <div class="listeBoutons">
 
-    <a href='processlog.php?archiver'>
-        <button>Archiver les logs</button>
-    </a> <br/>
-    <a href='processlog.php?vider'>
-        <button>Vider les logs</button>
-    </a><br/>
-    <a href='logout.php'>
-        <button>Déconnexion</button>
-    </a><br/>
+    <button onclick="location.href='processlog.php?archiver'">Archiver les logs</button>
+    <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
+    <button onclick="location.href='logout.php'">Déconnexion</button>
 
 </div>
-
 </body>
-
 </html>

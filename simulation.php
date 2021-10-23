@@ -23,7 +23,7 @@ if ($montant == false) {
 
     <?php
     if (isset($_GET["stat"]) and $_GET["stat"] == 1) {
-        echo "<p class='info' style='color: red'>Erreur dans les champs</p>";
+        echo "<p class='info error'>Erreur dans les champs</p>";
     }
     ?>
 
@@ -52,7 +52,7 @@ if ($montant == false) {
         </div>
         <?php
         if (isset($montant)) {
-            echo "<p class='result'>Montant à rembourser par mois : $montant €</p>";
+            echo "<p class='result success'>Montant à rembourser par mois : $montant €</p>";
         } else {
             echo "<br/><br/>";
         }
@@ -64,10 +64,10 @@ if ($montant == false) {
         <?php
         $file = "logs.csv";
         if (file_exists($file)) {
-            echo "<a href='#logs'>Historique</a>";
+            echo "<a class='popButton' href='#logs'>Historique</a>";
         }
         ?>
-        <a href='README.html'>Readme</a>
+        <a class="popButton" href='README.html'>Readme</a>
         <link rel="stylesheet" href="stylePopUp.css">
         <div id="logs" class="modal">
             <div class="modal_content">
@@ -88,13 +88,12 @@ if ($montant == false) {
                         if ($dataSize - 1 < $i) break;
                         $ligne = $data[$dataSize - 1 - $i];
 
-                        $taux = number_format($ligne[5], 2);
-                        echo "<tr>
-                                    <td>$ligne[3]</td>
-                                    <td>$ligne[4]</td>
-                                    <td>$taux</td>
-                                    <td>$ligne[2]</td>
-                                    </tr>";
+                        echo "<tr>";
+                        echo "<td>$ligne[3]</td>";
+                        echo "<td>$ligne[4]</td>";
+                        echo "<td>" . number_format($ligne[5], 2) . "</td>";
+                        echo "<td>$ligne[2]</td>";
+                        echo "</tr>";
                     }
                     echo "</table>";
                     fclose($fp);

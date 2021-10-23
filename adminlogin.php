@@ -16,10 +16,10 @@
         switch ($_GET['stat']) {
 
             case "1":
-                echo "<p class='info' style='color: red'>Erreur identifiant</p>";
+                echo "<p class='info error'>Erreur identifiant</p>";
                 break;
             case "2":
-                echo "<p class='info' style='color: greenyellow'>Déconnecté</p>";
+                echo "<p class='info success'>Déconnecté</p>";
                 break;
         }
     }

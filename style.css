@@ -1,43 +1,42 @@
+:root {
+    --gris: rgba(255, 255, 255, .3);
+    --gris-clair: rgba(255, 255, 255, .5);
+    --shadow: rgba(0, 0, 0, .2);
+    --bleu-table: #6495ed;
+    --deg1: #da429f;
+    --deg2: #2f52ff;
+}
+
 html {
     height: 100%;
 }
 
 body {
-    padding-top: 8rem;
     display: flex;
+    padding-top: 8rem;
     justify-content: center;
     text-align: center;
-    background: repeating-linear-gradient(45deg, #da429f, #2f52ff) fixed;
+    background: repeating-linear-gradient(45deg, var(--deg1), var(--deg2)) fixed;
     font-family: arial, sans-serif;
 }
 
 
 .listeBoutons {
     width: 20rem;
-    background: rgba(255, 255, 255, .3);
-    box-shadow: 50px 50px 40px -6px rgba(0, 0, 0, .2);
+    background: var(--gris);
+    box-shadow: 50px 50px 40px -6px var(--shadow);
     backdrop-filter: blur(10px);
     padding: 3rem 3rem 2.5rem 3rem;
-    border-left: 3px solid rgba(255, 255, 255, .3);
-    border-top: 3px solid rgba(255, 255, 255, .3);
+    border-left: 3px solid var(--gris);
+    border-top: 3px solid var(--gris);
     border-radius: 40px;
     zoom: 120%;
-}
-
-
-/* a l'intérieur du rectangle du formulaire */
-input {
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    padding: 1rem;
-    width: 80%;
-    border-radius: 50px;
-    backdrop-filter: blur(5px);
 }
 
 .form-group {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1rem;
 }
 
@@ -59,13 +58,18 @@ input {
     margin-bottom: 1rem;
 }
 
-button:hover {
-    background: rgba(207, 218, 57, 0.733);
-    transition: all .3s;
+/* a l'intérieur du rectangle du formulaire */
+input {
+    background: transparent;
+    border: 2px solid var(--gris-clair);
+    padding: 1rem;
+    outline: none;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
 }
 
 input:hover, input:focus {
-    background: rgba(199, 126, 206, 0.5);
+    background: rgba(200, 125, 205, 0.5);
     transition: all .3s;
 }
 
@@ -84,7 +88,7 @@ input[type=number] {
 
 button {
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--gris-clair);
     padding: 1rem;
     border-radius: 50px;
     backdrop-filter: blur(5px);
@@ -93,30 +97,52 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background: rgba(205, 220, 55, 0.7);
+    transition: all .3s;
+}
+
+.popButton {
+    text-decoration: none;
+    padding: 8px;
+    background-color: rgba(41, 168, 241, 0.5);
+    border-radius: 20px;
+    color: white;
+    border: 2px solid var(--gris-clair);
+    cursor: pointer;
+}
+
+.popButton:hover {
+    background: rgba(207, 218, 57, 0.733);
+    transition: all .3s;
+}
+
 .info {
     font-weight: 500;
     opacity: .7;
     font-size: 1.2rem;
     margin-top: 20px;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    text-shadow: 2px 2px 4px var(--shadow);
 }
 
-.result {
+.success {
     color: limegreen;
-    font-weight: 500;
-    font-size: 1.2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
 
 .error {
-    width: 20rem;
-    color: rgb(206, 39, 39);
+    color: #be0000;
+}
+
+.result {
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px var(--shadow);
 }
 
 table {
     margin: auto;
-    border: medium solid #6495ed;
+    border: 2px solid var(--bleu-table);
     color: white;
     border-radius: 5px;
     width: 90%;
@@ -124,11 +150,11 @@ table {
     border-spacing: 0;
 }
 
-td, th{
-    border: 2px solid #6495ed;
-    padding: 8px;
-}
-
 thead {
     font-size: 1.5rem;
+}
+
+td, th {
+    border: 2px solid var(--bleu-table);
+    padding: 8px;
 }
