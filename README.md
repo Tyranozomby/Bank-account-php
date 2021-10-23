@@ -121,14 +121,15 @@ Fichier de logs
 
 Format :
 | Adresse IP du client | Montant | Capital | Nombre de mois | Taux |
-|-------------|---------|---------|----------------|------|
+|----------------------|---------|---------|----------------|------|
 
 #### admin_pass.csv
 
 Fichier contenant les identifiants administrateurs
 
 Format :
-| Login | Mot de passe hashé en sha256 | |-------------|---------|
+| Login | Mot de passe hashé en sha256 |
+|-------|------------------------------|
 
 ### Schéma
 
