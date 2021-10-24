@@ -12,20 +12,19 @@
     <h1>Bienvenue</h1>
 
     <?php
-    if (isset($_GET['stat'])) {
-        switch ($_GET['stat']) {
 
-            case "1":
-                echo "<p class='info error'>Erreur identifiant</p>";
-                break;
-            case "2":
-                echo "<p class='info success'>Déconnecté</p>";
-                break;
-        }
+    switch ($_GET['stat'] ?? "0") {
+
+        case "1":
+            echo "<p class='info error'>Erreur identifiant</p>";
+            break;
+        case "2":
+            echo "<p class='info success'>Déconnecté</p>";
+            break;
     }
     ?>
 
-    <form action='dologin.php' method='post' class="listeBoutons">
+    <form action='dologin.php' method='post' class="box">
         <div class="form-group">
             <div class="labels">
                 <label for="login">Login</label>

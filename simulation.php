@@ -1,10 +1,15 @@
+
 <?php
 
 require "calcul.php";
+require_once "logmanagement.php";
 
 $montant = calcul();
-if ($montant == false) {
+if ($montant === null) {
     unset($montant);
+} else if ($montant === false) {
+    header("Location: simulation.php?err");
+    exit();
 }
 ?>
 
@@ -22,12 +27,12 @@ if ($montant == false) {
     <h1>Prêt Bancaire</h1>
 
     <?php
-    if (isset($_GET["stat"]) and $_GET["stat"] == 1) {
+    if (isset($_GET["err"])) {
         echo "<p class='info error'>Erreur dans les champs</p>";
     }
     ?>
 
-    <form action='' method='get' class="listeBoutons">
+    <form action='' method='get' class="box">
         <div class="form-group">
             <div class="labels">
                 <label for="capital">Capital</label>
@@ -61,9 +66,11 @@ if ($montant == false) {
     </form>
     <div>
         <br/><br/>
+
         <?php
-        $file = "logs.csv";
-        if (file_exists($file)) {
+
+        if (file_exists($log_file_name)) {
+            /** @noinspection HtmlUnknownAnchorTarget */
             echo "<a class='popButton' href='#logs'>Historique</a>";
         }
         ?>
@@ -73,32 +80,7 @@ if ($montant == false) {
             <div class="modal_content">
                 <h1>Historique</h1>
                 <a href="#" class="modal_close">&times;</a>
-                <?php
-                if (file_exists($file) && $fp = fopen($file, "r")) {
-                    $titre = fgets($fp);
-                    $data = array();
-                    while ($ligne = fgetcsv($fp, 1024, ';')) {
-                        array_push($data, $ligne);
-                    }
-
-                    $dataSize = count($data);
-
-                    echo "<table><thead><tr><th>Capital</th><th>Mois</th><th>Taux</th><th>Montant (€/mois)</th></thead></tr>";
-                    for ($i = 0; $i < 10; $i++) {
-                        if ($dataSize - 1 < $i) break;
-                        $ligne = $data[$dataSize - 1 - $i];
-
-                        echo "<tr>";
-                        echo "<td>$ligne[3] €</td>";
-                        echo "<td>$ligne[4]</td>";
-                        echo "<td>" . number_format($ligne[5], 2) . " %</td>";
-                        echo "<td>$ligne[2]</td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                    fclose($fp);
-                }
-                ?>
+                <?php print_logs_table(10); ?>
             </div>
         </div>
     </div>

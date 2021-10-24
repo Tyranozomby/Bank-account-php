@@ -1,31 +1,43 @@
 <?php
 
-if (isset($_POST['login'], $_POST['password']) && $_POST['login'] != "" && $_POST['password'] != "") {
 
-    if (file_exists("admin_pass.csv")) {
-        $file = "admin_pass.csv";
-        $fp = fopen($file, "r");
+$admin_file_name = "admin_pass.csv";
 
-        while ($data = fgetcsv($fp, 1024, ";")) {
-
-            if ($data[0] == $_POST['login']) {
-
-                if (hash('sha256', strip_tags($_POST['password'])) == $data[1]) {
-                    session_start();
-                    $_SESSION["admin"] = "admin";
-                    header('Location: admin.php');
-                } else {
-                    header('Location: adminlogin.php?stat=1');
-                }
-                fclose($fp);
-                exit();
-            }
-        }
-        header('Location: adminlogin.php?stat=1');
-        fclose($fp);
-    } else {
-        header('Location: adminlogin.php?stat=1');
-    }
-} else {
-    header('Location: adminlogin.php?stat=1');
+if (!isset($_POST['login'], $_POST['password']) || $_POST['login'] == "" || $_POST['password'] == "") {
+    error();
 }
+
+if (!file_exists($admin_file_name)) {
+    error();
+}
+
+
+$fp = fopen($admin_file_name, "r");
+
+while ($data = fgetcsv($fp, 1024, ";")) {
+
+    if ($data[0] == $_POST['login']) {
+
+        if (hash('sha256', strip_tags($_POST['password'])) == $data[1]) {
+            session_start();
+            $_SESSION["admin"] = "admin";
+            header('Location: admin.php');
+        } else {
+            fclose($fp);
+            error();
+        }
+        fclose($fp);
+
+    }
+}
+
+error();
+
+
+/** @noinspection PhpNoReturnAttributeCanBeAddedInspection */
+function error()
+{
+    header('Location: adminlogin.php?stat=1');
+    exit();
+}
+

@@ -1,5 +1,7 @@
 <?php
 
+require_once "logmanagement.php";
+
 //Ouverture du fichier
 session_start();
 if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
@@ -23,16 +25,28 @@ if (isset($_GET["archive"])) {
     <title>Admin</title>
     <link rel="stylesheet" href="style.css"/>
     <style>
+        body{
+            padding: 0;
+            flex-direction: column;
+            align-items: center;
+        }
         button {
             width: 200px;
             margin: 5px;
         }
 
-        .listeBoutons {
-            top: 1.5%;
+        .box {
+            padding: 1%;
             width: fit-content;
-            padding: 0.5rem;
-            position: fixed;
+            display: flex;
+            flex-direction: row;
+
+            height: fit-content;
+            margin: 2% 2% 5%;
+
+        }
+        table{
+            background-color: rgba(0, 0, 0, 0.35);
         }
     </style>
 </head>
@@ -93,8 +107,18 @@ if (file_exists("archives/$selected") && ($file = fopen("archives/$selected", "r
             </select>
             <button type="submit">Valider</button>
         </form>
+<body>
+
+<div class="box">
+
+    <button onclick="location.href='processlog.php?archiver'">Archiver les logs</button>
+    <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
+    <button onclick="location.href='logout.php'">Déconnexion</button>
 
     </div>
 </div>
+
+<?php print_logs_table(); ?>
+
 </body>
 </html>

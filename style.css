@@ -21,7 +21,7 @@ body {
 }
 
 
-.listeBoutons {
+.box {
     width: 20rem;
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
