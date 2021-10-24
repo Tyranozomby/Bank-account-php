@@ -20,10 +20,11 @@ if (isset($_GET["archive"])) {
 <!doctype html>
 <html lang="fr">
 <meta charset="utf-8">
-#TEST
+
 <head>
     <title>Admin</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stylePopUp.css">
     <style>
         body {
             padding: 0;
@@ -45,19 +46,27 @@ if (isset($_GET["archive"])) {
             height: fit-content;
             margin: 2% 2% 5%;
         }
+        .modal_content {
+            width: 600px;
+            height: 450px;
+            background: rgba(235, 160, 0, 0.9);
+        }
+        .nomFichier{
+            margin: 15px 50px;
 
+        }
         table {
             background-color: rgba(0, 0, 0, 0.35);
         }
     </style>
 </head>
 
-<body style="padding: 3rem 0">
+<body style="padding: 9rem 0 3rem 0">
 <div class="box">
-
-    <button onclick="location.href='processlog.php?archiver'">Archiver les logs</button>
+    <button onclick="location.href='#archiverPopUp'">Archiver</button>
     <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
     <button onclick="location.href='logout.php'">Déconnexion</button>
+
     <form method="get" action="admin.php">
         <label for="archive"></label>
         <select id="archive" name="archive">
@@ -65,6 +74,7 @@ if (isset($_GET["archive"])) {
             foreach ($archives as $k => $v) {
                 if ($selected == $v) {
                     echo "<option hidden selected>$v</option>";
+                    $setsel = true;
                 } else {
                     echo "<option>$v</option>";
                 }
@@ -76,7 +86,23 @@ if (isset($_GET["archive"])) {
 
 </div>
 
+<div id="archiverPopUp" class="modal">
+    <div class="modal_content">
+        <h1>Enregistrer Sous:</h1>
+
+        <P> Nom du fichier : </p>
+        <form method='get' action='processlog.php?archiver' >
+            <input class='nomFichier' type='text' id="archiver" name='archiver' autocomplete="false" required>
+            <br></br>
+            <button type="submit">Enregistrer</button>
+        </form>
+        <a href="#" class="modal_close">&times;</a>
+    </div>
+</div>
+
+
 <?php print_logs_table($selected); ?>
 
 </body>
+
 </html>

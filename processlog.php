@@ -7,8 +7,10 @@ if ($_SESSION["admin"] != "admin") {
 }
 
 if (isset($_GET["archiver"])) {
+
+    $nomFichier=$_GET["archiver"];
     //archiver logs
-    rename(get_full_log_file_path(), get_full_log_file_path() . ".archive");
+    rename(get_full_log_file_path(),"archives/".$nomFichier);
 } else if (isset($_GET["vider"])) {
     //archiver logs
     unlink(get_full_log_file_path());
