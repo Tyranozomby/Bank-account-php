@@ -12,6 +12,12 @@ $log_file_name = "logs.csv";
 $log_header = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
 
 
+function get_full_log_file_path(): string
+{
+    global $log_file_name, $logs_folder;
+    return $logs_folder . "/" . $log_file_name;
+}
+
 /**
  * @param string | null
  * @param bool $read

@@ -94,8 +94,7 @@ if ($montant === null) {
         <br/><br/>
 
         <?php
-
-        if (file_exists($log_file_name)) {
+        if (file_exists(get_full_log_file_path())) {
             /** @noinspection HtmlUnknownAnchorTarget */
             echo "<a class='popButton' href='#logs'>Historique</a>";
         }
