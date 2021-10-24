@@ -1,5 +1,6 @@
 <?php
 require_once "logmanagement.php";
+
 session_start();
 if ($_SESSION["admin"] != "admin") {
     header("Location: adminlogin.php?stat=1");

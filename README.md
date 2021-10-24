@@ -128,8 +128,7 @@ Format :
 Fichier contenant les identifiants administrateurs
 
 Format :
-| Login | Mot de passe hashé en sha256 |
-|-------|------------------------------|
+| Login | Mot de passe hashé en sha256 | |-------|------------------------------|
 
 ### Schéma
 

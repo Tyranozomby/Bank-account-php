@@ -1,5 +1,5 @@
 <?php
-// 404 si accedé directement
+// 404 si accédé directement
 if (count(get_included_files()) == 1) {
     http_response_code(404);
     exit();
@@ -61,7 +61,7 @@ function get_all_log_files(): array
 
 function get_logs_data(string $filename = null): false|array
 {
-    $logfile = open_log_file($filename,true);
+    $logfile = open_log_file($filename, true);
 
     if ($logfile == false) return false;
 
@@ -81,14 +81,15 @@ function get_logs_data(string $filename = null): false|array
 
 
 /**
+ * @param string|null $filename
  * @param null $limit_from_last
  * @param int[]| null $columns
  * @param array $col_callbacks
  */
-function print_logs_table(string $filename = null,$limit_from_last = null, array $columns = null, array $col_callbacks = [])
+function print_logs_table(string $filename = null, $limit_from_last = null, array $columns = null, array $col_callbacks = [])
 {
     $data = get_logs_data($filename);
-    if($data == false) return;
+    if ($data == false) return;
     $dataSize = count($data);
 
     $header_display = array("IP", "Date", "Montant (€/mois)", "Capital", "Mois", "Taux");
@@ -134,9 +135,4 @@ function print_logs_table(string $filename = null,$limit_from_last = null, array
     }
     echo "
 </table>";
-
 }
-
-
-
-

@@ -33,8 +33,6 @@ function calcul(): float|false|null
     fill_logs($montant, $capital, $nombre_mois, $taux);
 
     return $montant;
-
-
 }
 
 function fill_logs($montant, $capital, $nombre_mois, $taux)
@@ -50,5 +48,3 @@ function fill_logs($montant, $capital, $nombre_mois, $taux)
 
     fclose($f); // leve le verrou
 }
-
-
