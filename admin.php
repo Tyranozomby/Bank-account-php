@@ -78,7 +78,7 @@ if (file_exists("archives/$selected") && ($file = fopen("archives/$selected", "r
         <button onclick="location.href='logout.php'">Déconnexion</button>
     </div>
     <div>
-        <form method="get" action="admin.php" style="display: block">
+        <form method="get" action="admin.php">
             <label for="archive"></label>
             <select id="archive" name="archive">
                 <?php
