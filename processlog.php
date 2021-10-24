@@ -7,15 +7,13 @@ if ($_SESSION["admin"] != "admin") {
 }
 
 if (isset($_GET["archiver"])) {
-
-    $nomFichier=$_GET["archiver"];
+    $nomFichier = $_GET["archiver"];
     //archiver logs
-    rename(get_full_log_file_path(),"archives/".$nomFichier);
+    rename(get_full_log_file_path(), "$logs_folder/$nomFichier");
 } else if (isset($_GET["vider"])) {
-    //archiver logs
+    //vider logs
     unlink(get_full_log_file_path());
     fclose(open_log_file());
-
 }
 
 header("Location: admin.php");

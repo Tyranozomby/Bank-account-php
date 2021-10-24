@@ -86,7 +86,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-button {
+button, select {
     background: transparent;
     border: 2px solid var(--gris-clair);
     padding: 1rem;
@@ -97,9 +97,17 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover:enabled, select:hover {
     background: rgba(205, 220, 55, 0.7);
     transition: all .3s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+option {
+    background: white;
 }
 
 .popButton {

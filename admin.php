@@ -11,8 +11,13 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 $archives = get_all_log_files();
 $selected = $log_file_name;
 
-if (isset($_GET["archive"])) {
+$disable = FALSE;
+if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
     $selected = $_GET["archive"];
+
+    if ($selected != "logs.csv") {
+        $disable = TRUE;
+    }
 }
 
 //BONJOUR
@@ -23,77 +28,49 @@ if (isset($_GET["archive"])) {
 
 <head>
     <title>Admin</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stylePopUp.css">
-    <style>
-        body {
-            padding: 0;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        button {
-            width: 200px;
-            margin: 5px;
-        }
-
-        .box {
-            padding: 1%;
-            width: fit-content;
-            display: flex;
-            flex-direction: row;
-
-            height: fit-content;
-            margin: 2% 2% 5%;
-        }
-        .modal_content {
-            width: 600px;
-            height: 450px;
-            background: rgba(235, 160, 0, 0.9);
-        }
-        .nomFichier{
-            margin: 15px 50px;
-
-        }
-        table {
-            background-color: rgba(0, 0, 0, 0.35);
-        }
-    </style>
+    <link rel="stylesheet" href="admin.css">
 </head>
 
-<body style="padding: 9rem 0 3rem 0">
+<body>
 <div class="box">
-    <button onclick="location.href='#archiverPopUp'">Archiver</button>
-    <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
+
+    <?php
+    if ($disable == TRUE) { ?>
+        <button onclick="location.href='#archiverPopUp'" disabled>Archiver</button>
+        <button onclick="location.href='processlog.php?vider'" disabled>Vider les logs</button>
+        <?php
+    } else { ?>
+        <button onclick="location.href='#archiverPopUp'">Archiver</button>
+        <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
+    <?php }
+    ?>
     <button onclick="location.href='logout.php'">Déconnexion</button>
 
-    <form method="get" action="admin.php">
-        <label for="archive"></label>
-        <select id="archive" name="archive">
+    <form>
+        <select id="archive" name="archive" onchange="this.form.submit()">
             <?php
             foreach ($archives as $k => $v) {
                 if ($selected == $v) {
-                    echo "<option hidden selected>$v</option>";
-                    $setsel = true;
+                    echo "<option selected>$v</option>";
                 } else {
                     echo "<option>$v</option>";
                 }
             }
             ?>
         </select>
-        <button type="submit">Valider</button>
     </form>
-
 </div>
 
 <div id="archiverPopUp" class="modal">
     <div class="modal_content">
         <h1>Enregistrer Sous:</h1>
-
         <P> Nom du fichier : </p>
-        <form method='get' action='processlog.php?archiver' >
-            <input class='nomFichier' type='text' id="archiver" name='archiver' autocomplete="false" required>
-            <br></br>
+        <form method='get' action='processlog.php'>
+            <label for="archiver"></label>
+            <input style="margin: 15px 50px;" type='text' id="archiver" name='archiver' autocomplete="false" required>
+            <br/>
             <button type="submit">Enregistrer</button>
         </form>
         <a href="#" class="modal_close">&times;</a>
