@@ -113,7 +113,7 @@ button:hover {
 }
 
 .popButton:hover {
-    background: rgba(207, 218, 57, 0.733);
+    background: rgba(207, 218, 57, 0.733) !important;
     transition: all .3s;
 }
 

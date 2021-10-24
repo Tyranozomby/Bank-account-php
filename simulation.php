@@ -1,4 +1,3 @@
-
 <?php
 
 require "calcul.php";
@@ -23,6 +22,33 @@ if ($montant === null) {
 </head>
 
 <body>
+<script type="text/javascript">
+    function loadData(elem){
+        const row = elem.parentElement.parentElement
+
+        const capital = row.childNodes[0].innerText;
+        const mois = row.childNodes[1].innerText;
+        const taux = row.childNodes[2].innerText;
+
+
+
+        let capitalelem = document.getElementById("capital");
+        let moiselem = document.getElementById("nombre_mois");
+        let tauxelem = document.getElementById("taux");
+        if (!(capitalelem.value === capital && moiselem.value === mois && tauxelem.value === taux)) {
+            capitalelem.value = capital;
+            moiselem.value = mois;
+            tauxelem.value = taux;
+            const elems = document.getElementsByClassName("result")
+            if (elems.length > 0) elems[0].remove()
+        }
+
+        location.hash = "";
+
+    }
+
+</script>
+
 <div>
     <h1>Prêt Bancaire</h1>
 
@@ -80,7 +106,11 @@ if ($montant === null) {
             <div class="modal_content">
                 <h1>Historique</h1>
                 <a href="#" class="modal_close">&times;</a>
-                <?php print_logs_table(10); ?>
+                <?php
+                print_logs_table(10, [3, 4, 5, 2], [
+                        2 => fn($data) => "<a class='popButton' style=' padding: 2%; background-color: black;' onclick='loadData(this)'>$data</a>"
+                ]);
+                ?>
             </div>
         </div>
     </div>
