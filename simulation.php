@@ -1,6 +1,7 @@
 <?php
 
 require "calcul.php";
+
 require_once "logmanagement.php";
 
 $montant = calcul();
@@ -23,7 +24,7 @@ if ($montant === null) {
 
 <body>
 <script type="text/javascript">
-    function loadData(elem){
+    function loadData(elem) {
         const row = elem.parentElement.parentElement
 
         const capital = row.childNodes[0].innerText;
@@ -31,14 +32,13 @@ if ($montant === null) {
         const taux = row.childNodes[2].innerText;
 
 
-
         let capitalelem = document.getElementById("capital");
         let moiselem = document.getElementById("nombre_mois");
         let tauxelem = document.getElementById("taux");
-        if (!(capitalelem.value === capital && moiselem.value === mois && tauxelem.value === taux)) {
+        if (!(capitalelem.value === capital && moiselem.value === mois && Number(tauxelem.value.replace(" %", "")) === taux)) {
             capitalelem.value = capital;
             moiselem.value = mois;
-            tauxelem.value = taux;
+            tauxelem.value = taux.replace(" %", "");
             const elems = document.getElementsByClassName("result")
             if (elems.length > 0) elems[0].remove()
         }
@@ -106,8 +106,8 @@ if ($montant === null) {
                 <h1>Historique</h1>
                 <a href="#" class="modal_close">&times;</a>
                 <?php
-                print_logs_table(null,10, [3, 4, 5, 2], [
-                        2 => fn($data) => "<a class='popButton' style=' padding: 2%; background-color: black;' onclick='loadData(this)'>$data</a>"
+                print_logs_table(null, 10, [3, 4, 5, 2], [
+                    2 => fn($data) => "<a class='popButton' style=' padding: 2%; background-color: black;' onclick='loadData(this)'>$data</a>"
                 ]);
                 ?>
             </div>
