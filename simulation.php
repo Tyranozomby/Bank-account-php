@@ -107,7 +107,7 @@ if ($montant === null) {
                 <h1>Historique</h1>
                 <a href="#" class="modal_close">&times;</a>
                 <?php
-                print_logs_table(10, [3, 4, 5, 2], [
+                print_logs_table(null,10, [3, 4, 5, 2], [
                         2 => fn($data) => "<a class='popButton' style=' padding: 2%; background-color: black;' onclick='loadData(this)'>$data</a>"
                 ]);
                 ?>
