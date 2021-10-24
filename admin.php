@@ -6,6 +6,13 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
     header("Location: adminlogin.php?stat=1");
 }
 
+$archives = array_diff(scandir("archives"), array('.', '..'));
+$selected = "logs.csv";
+
+if (isset($_GET["archive"])) {
+    $selected = $_GET["archive"];
+}
+
 
 ?>
 <!doctype html>
@@ -24,23 +31,28 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
         .listeBoutons {
             top: 1.5%;
             width: fit-content;
-            display: flex;
-            flex-direction: row;
             padding: 0.5rem;
-            height: fit-content;
             position: fixed;
         }
     </style>
 </head>
 
-<body>
-
+<body style="padding: 9rem 0 3rem 0">
 <?php
-if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
+if (!file_exists("archives") and !is_dir("archives")) {
+    mkdir("archives");
+    $f = fopen("archives/logs.csv", 'w');
+    $titres = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
+    fputcsv($f, $titres, ";");
+    fclose($f);
+}
+
+if (file_exists("archives/$selected") && ($file = fopen("archives/$selected", "r")) !== FALSE) {
+
     echo "<table>";
     echo "<thead><tr><th>Ip</th><th>Date</th><th>Montant</th><th>Capital</th><th>Nombre De Mois</th><th>Taux</th></thead></tr>";
 
-    fgetcsv($file, 1000, ";");
+    fgetcsv($file, 1024, ";");
     echo "<tr>";
     while ($data = fgetcsv($file, 1000, ";")) {
         $date = date_create();
@@ -60,11 +72,29 @@ if (file_exists("logs.csv") && ($file = fopen("logs.csv", "r")) !== FALSE) {
 //Création des boutons
 ?>
 <div class="listeBoutons">
+    <div>
+        <button onclick="location.href='processlog.php?archiver'">Archiver les logs</button>
+        <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
+        <button onclick="location.href='logout.php'">Déconnexion</button>
+    </div>
+    <div>
+        <form method="get" action="admin.php" style="display: block">
+            <label for="archive"></label>
+            <select id="archive" name="archive">
+                <?php
+                foreach ($archives as $k => $v) {
+                    if ($selected == $v) {
+                        echo "<option hidden selected>$v</option>";
+                    } else {
+                        echo "<option>$v</option>";
+                    }
+                }
+                ?>
+            </select>
+            <button type="submit">Valider</button>
+        </form>
 
-    <button onclick="location.href='processlog.php?archiver'">Archiver les logs</button>
-    <button onclick="location.href='processlog.php?vider'">Vider les logs</button>
-    <button onclick="location.href='logout.php'">Déconnexion</button>
-
+    </div>
 </div>
 </body>
 </html>

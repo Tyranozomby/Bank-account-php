@@ -83,15 +83,15 @@ if ($montant == false) {
 
                     $dataSize = count($data);
 
-                    echo "<table><thead><tr><th>Capital</th><th>Mois</th><th>Taux (%)</th><th>Montant (€/mois)</th></thead></tr>";
+                    echo "<table><thead><tr><th>Capital</th><th>Mois</th><th>Taux</th><th>Montant (€/mois)</th></thead></tr>";
                     for ($i = 0; $i < 10; $i++) {
                         if ($dataSize - 1 < $i) break;
                         $ligne = $data[$dataSize - 1 - $i];
 
                         echo "<tr>";
-                        echo "<td>$ligne[3]</td>";
+                        echo "<td>$ligne[3] €</td>";
                         echo "<td>$ligne[4]</td>";
-                        echo "<td>" . number_format($ligne[5], 2) . "</td>";
+                        echo "<td>" . number_format($ligne[5], 2) . " %</td>";
                         echo "<td>$ligne[2]</td>";
                         echo "</tr>";
                     }

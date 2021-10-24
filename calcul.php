@@ -13,9 +13,9 @@ function calcul(): float|bool
 
         // Crée les variables $capital, $nombre_mois, $taux en vérifiant que ce sont bien des nombres sinon redirige
         if (is_numeric($_GET["capital"]) and is_numeric($_GET["nombre_mois"]) and is_numeric($_GET["taux"])) {
-            $capital = $_GET["capital"];
-            $nombre_mois = $_GET["nombre_mois"];
-            $taux = $_GET["taux"];
+            $capital = round($_GET["capital"], 2);
+            $nombre_mois = round($_GET["nombre_mois"], 2);
+            $taux = round($_GET["taux"], 2);
         } else {
             header("Location: simulation.php?stat=1");
             exit();
@@ -34,19 +34,19 @@ function calcul(): float|bool
 function fill_logs($montant, $capital, $nombre_mois, $taux)
 {
     // Crée le fichier et ajoute les colonnes s'il n'existe pas
-    if (!file_exists("logs.csv")) {
-        $f = fopen("logs.csv", 'w');
+    if (!file_exists("archives/logs.csv")) {
+        $f = fopen("archives/logs.csv", 'w');
         $array = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
         fputcsv($f, $array, ";");
         fclose($f);
     }
 
     // Essaye d'ouvrir le fichier et boucle tant qu'il n'y arrive pas (c'est qu'il est utilisé par un autre utilisateur)
-    $f = fopen("logs.csv", 'a');
+    $f = fopen("archives/logs.csv", 'a');
     if ($f == false) {
         while ($f == false) {
             usleep(10);
-            $f = fopen("logs.csv", 'a');
+            $f = fopen("archives/logs.csv", 'a');
         }
     }
 
