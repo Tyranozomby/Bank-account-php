@@ -4,7 +4,7 @@ body {
     align-items: center;
 }
 
-button, select {
+button, select, .button {
     width: 200px;
     margin: 5px;
 }

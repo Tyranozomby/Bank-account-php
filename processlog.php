@@ -14,6 +14,9 @@ if (isset($_GET["archiver"])) {
     //vider logs
     unlink(get_full_log_file_path());
     fclose(open_log_file());
+} else if (isset($_GET["supprimer"], $_GET["archive"])) {
+    $archive = $_GET['archive'];
+    unlink("$logs_folder/$archive");
 }
 
 header("Location: admin.php");

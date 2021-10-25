@@ -91,7 +91,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-button, select {
+button, select, .button {
     background: var(--input);
     border: 2px solid var(--gris-clair);
     padding: 1rem;
@@ -101,7 +101,7 @@ button, select {
     cursor: pointer;
 }
 
-button:hover:enabled, select:hover {
+button:hover:enabled, select:hover, .button:hover {
     background: rgba(205, 220, 55, 0.7);
     transition: all .3s;
 }
