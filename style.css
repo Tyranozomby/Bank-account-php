@@ -1,6 +1,7 @@
 :root {
     --gris: rgba(255, 255, 255, .3);
     --gris-clair: rgba(255, 255, 255, .5);
+    --input: #bda7eb;
     --shadow: rgba(0, 0, 0, .2);
     --bleu-table: #6495ed;
     --deg1: #da429f;
@@ -25,12 +26,13 @@ body {
     width: 20rem;
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
-    backdrop-filter: blur(10px);
     padding: 3rem 3rem 2.5rem 3rem;
+    margin-top: 3rem;
     border-left: 3px solid var(--gris);
     border-top: 3px solid var(--gris);
     border-radius: 40px;
-    zoom: 120%;
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
 }
 
 .form-group {
@@ -60,12 +62,11 @@ body {
 
 /* a l'intérieur du rectangle du formulaire */
 input {
-    background: transparent;
+    background: var(--input);
     border: 2px solid var(--gris-clair);
     padding: 1rem;
     outline: none;
     border-radius: 50px;
-    backdrop-filter: blur(5px);
 }
 
 input:hover, input:focus {
@@ -87,11 +88,10 @@ input[type=number] {
 }
 
 button, select {
-    background: transparent;
+    background: var(--input);
     border: 2px solid var(--gris-clair);
     padding: 1rem;
     border-radius: 50px;
-    backdrop-filter: blur(5px);
     width: 150px;
     font-size: 1rem;
     cursor: pointer;

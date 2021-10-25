@@ -11,11 +11,13 @@ button, select {
 
 .box {
     padding: 1%;
+    width: -moz-fit-content;
     width: fit-content;
+    height: fit-content;
+
     display: flex;
     flex-direction: row;
 
-    height: fit-content;
     margin: 2% 2% 5%;
 }
 
