@@ -35,6 +35,10 @@ body {
     -moz-transform: scale(1.2);
 }
 
+.pops {
+    margin-top: 4rem;
+}
+
 .form-group {
     display: flex;
     flex-wrap: wrap;

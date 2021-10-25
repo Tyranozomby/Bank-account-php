@@ -20,9 +20,13 @@ function calcul(): float|false|null
         return false;
     }
 
+    if ($_GET["capital"] < 0 or $_GET["nombre_mois"] < 0 or $_GET["taux"] <= 0) {
+        return false;
+    }
+
 
     $capital = round($_GET["capital"], 2);
-    $nombre_mois = round($_GET["nombre_mois"], 2);
+    $nombre_mois = round($_GET["nombre_mois"]);
     $taux = round($_GET["taux"], 2);
 
     // Formule de calcul du montant
