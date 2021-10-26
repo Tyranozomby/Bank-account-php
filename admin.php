@@ -55,7 +55,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             <input type="submit" class="button" name="vider" value="Vider les logs">
         <?php } ?>
 
-        <button onclick="location.href='logout.php'">Déconnexion</button>
+        <button  type="button" onclick="location.href='logout.php'">Déconnexion</button>
 
         <label for="archive"></label>
         <select id="archive" name="archive"
