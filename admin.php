@@ -59,7 +59,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
         <label for="archive"></label>
         <select id="archive" name="archive"
-                onchange="window.location.href = window.location.href.split('?')[0] + '?archive=' + this.value">
+                onchange="window.location.href = window.location.href.split('#')[0].split('?')[0] + '?archive=' + this.value">
             <?php
             foreach ($archives as $k => $v) {
                 if ($selected == $v) {

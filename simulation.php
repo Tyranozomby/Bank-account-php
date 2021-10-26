@@ -90,7 +90,7 @@ if ($montant === null) {
         ?>
         <button type='submit'>Calculer</button>
     </form>
-    <div class="pops">
+    <div style="margin-top: 1.2rem;">
 
         <?php
         if (file_exists(get_full_log_file_path())) {

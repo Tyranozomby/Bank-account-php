@@ -23,20 +23,19 @@ body {
 
 
 .box {
-    width: 20rem;
+    width: 25rem;
+    font-size: 1.3rem;
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
-    padding: 3rem 3rem 2.5rem 3rem;
+
     margin-top: 3rem;
+    padding: 3rem 3rem 2.5rem 3rem;
+
     border-left: 3px solid var(--gris);
     border-top: 3px solid var(--gris);
     border-radius: 40px;
-    transform: scale(1.2);
-    -moz-transform: scale(1.2);
-}
 
-.pops {
-    margin-top: 4rem;
+    /*zoom: 120%;*/
 }
 
 .form-group {
@@ -66,9 +65,12 @@ body {
 
 /* a l'intérieur du rectangle du formulaire */
 input {
+    height: 1.3rem;
+    width: 11rem;
+    font-size: 1.2rem;
     background: var(--input);
     border: 2px solid var(--gris-clair);
-    padding: 1rem;
+    padding: 1.2rem;
     outline: none;
     border-radius: 50px;
 }
@@ -97,7 +99,7 @@ button, select, .button {
     padding: 1rem;
     border-radius: 50px;
     width: 150px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 

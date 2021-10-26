@@ -5,7 +5,8 @@ body {
 }
 
 button, select, .button {
-    width: 200px;
+    width: 15rem;
+    height: 4rem;
     margin: 5px;
 }
 
@@ -18,7 +19,7 @@ button, select, .button {
     display: flex;
     flex-direction: row;
 
-    margin: 2% 2% 5%;
+    margin: 2% 0 3% 0;
 }
 
 .modal_content {
