@@ -9,6 +9,7 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 }
 
 $archives = get_all_log_files();
+/** @noinspection PhpUndefinedVariableInspection */
 $selected = $log_file_name;
 
 $isarchive = FALSE;
@@ -48,7 +49,9 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
     <form method="get" action="processlog.php">
 
         <?php if ($isarchive) { ?>
-            <button type="button" onclick="download('<?php echo "$logs_folder/$selected"; ?>')">Télécharger</button>
+            <button type="button" onclick="download('<?php /** @noinspection PhpUndefinedVariableInspection */
+            echo "$logs_folder/$selected"; ?>')">Télécharger
+            </button>
             <input type="submit" class="button" name="supprimer" value="Supprimer l'archive">
         <?php } else { ?>
             <button type="button" onclick="location.href='#archiverPopUp'">Archiver les logs</button>
@@ -76,18 +79,27 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 <?php if (!$isarchive) { ?>
     <div id="archiverPopUp" class="modal">
         <div class="modal_content">
-            <h1>Enregistrer Sous:</h1>
-            <P> Nom du fichier : </p>
+
+            <h1>Enregistrer Sous :</h1>
+
             <form method='get' action='processlog.php'>
+                <p> Nom du fichier :</p>
                 <label for="archiver"></label>
                 <input style="margin: 15px 50px;" type='text' id="archiver" name='archiver' autocomplete="false"
                        required>
                 <br/>
                 <button type="submit">Enregistrer</button>
+                <?php
+                if (isset($_GET["stat"]) and $_GET["stat"] == 1) {
+                    echo "<p class='error'>Erreur ce nom existe deja</p>";
+                }
+                ?>
             </form>
+
             <a href="#" class="modal_close">&times;</a>
         </div>
     </div>
+
 <?php } ?>
 
 <?php print_logs_table($selected); ?>
