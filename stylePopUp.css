@@ -46,3 +46,8 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
+#archiver {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}

@@ -6,6 +6,9 @@
     --bleu-table: #6495ed;
     --deg1: #da429f;
     --deg2: #2f52ff;
+
+    --error: #be0000;
+    --success: limegreen;
 }
 
 html {
@@ -141,17 +144,17 @@ option {
 }
 
 .success {
-    color: limegreen;
+    color: var(--success);
 }
 
 .error {
-    color: #be0000;
+    color: var(--error);
 }
 
 .result {
     font-weight: 500;
-    font-size: 1.2rem;
-    text-shadow: 2px 2px 4px var(--shadow);
+    font-size: 1.6rem;
+    text-shadow: 3px 3px 4px var(--shadow);
 }
 
 table {

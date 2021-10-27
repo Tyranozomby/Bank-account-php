@@ -58,7 +58,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             <input type="submit" class="button" name="vider" value="Vider les logs">
         <?php } ?>
 
-        <button  type="button" onclick="location.href='logout.php'">Déconnexion</button>
+        <button type="button" onclick="location.href='logout.php'">Déconnexion</button>
 
         <label for="archive"></label>
         <select id="archive" name="archive"
@@ -85,7 +85,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             <form method='get' action='processlog.php'>
                 <p> Nom du fichier :</p>
                 <label for="archiver"></label>
-                <input style="margin: 15px 50px;" type='text' id="archiver" name='archiver' autocomplete="false"
+                <input type='text' id="archiver" name='archiver' autocomplete="false"
                        required>
                 <br/>
                 <button type="submit">Enregistrer</button>
