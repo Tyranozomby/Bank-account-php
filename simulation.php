@@ -18,6 +18,7 @@ if ($montant === null) {
 <meta charset="utf-8"/>
 
 <head>
+    <link rel="icon" type="image/png" href="icones/simulation.png" />
     <title>Formulaire de simulation</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
