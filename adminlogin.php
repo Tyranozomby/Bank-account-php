@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <meta charset="utf-8"/>
-
+<link rel="icon" type="image/png" href="icones/login.png" />
 <head>
     <title>Admin Login</title>
     <link rel="stylesheet" href="style.css"/>

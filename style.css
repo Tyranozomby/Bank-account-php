@@ -5,7 +5,7 @@
     --shadow: rgba(0, 0, 0, .2);
     --bleu-table: #6495ed;
     --deg1: #da429f;
-    --deg2: #2f52ff;
+    --deg2: #092eef;
 
     --error: #be0000;
     --success: limegreen;
@@ -20,7 +20,7 @@ body {
     padding-top: 8rem;
     justify-content: center;
     text-align: center;
-    background: repeating-linear-gradient(45deg, var(--deg1), var(--deg2)) fixed;
+    background: repeating-linear-gradient(85deg, var(--deg1), var(--deg2)) fixed;
     font-family: arial, sans-serif;
 }
 
