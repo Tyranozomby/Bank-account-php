@@ -1,12 +1,12 @@
 <?php
 
-require_once "logmanagement.php";
-
 // 404 si pas accédé via simulation.php
 if (count(get_included_files()) == 1) {
     http_response_code(404);
     exit();
 }
+
+require_once "logmanagement.php";
 
 function calcul(): float|false|null
 {
