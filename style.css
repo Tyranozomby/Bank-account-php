@@ -11,10 +11,6 @@
     --success: limegreen;
 }
 
-html {
-    height: 100%;
-}
-
 body {
     display: flex;
     padding-top: 8rem;
@@ -37,13 +33,10 @@ body {
     border-left: 3px solid var(--gris);
     border-top: 3px solid var(--gris);
     border-radius: 40px;
-
-    /*zoom: 120%;*/
 }
 
 .form-group {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
     margin-bottom: 1rem;
 }
@@ -53,7 +46,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem 1rem 1rem 0;
-    height: auto;
     text-align: left;
 }
 
