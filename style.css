@@ -168,3 +168,6 @@ td, th {
     border: 2px solid var(--bleu-table);
     padding: 8px;
 }
+:visited{
+    color: rgb(228, 157, 25);
+}
