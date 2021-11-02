@@ -98,7 +98,7 @@ if ($montant === null) {
             echo "<a class='popButton' href='#logs'>Historique</a>";
         }
         ?>
-        <a class="popButton" href='README.html'>Readme</a>
+        <a class="popButton" href='readme.html'>Readme</a>
         <link rel="stylesheet" href="stylePopUp.css">
         <div id="logs" class="modal">
             <div class="modal_content">
