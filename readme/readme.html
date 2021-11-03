@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="fr">
 <meta charset="UTF-8">
 <head>
@@ -35,6 +34,51 @@
         }
     </style>
     <title>Documentation du projet</title>
+
+    //javascript pour les couleurs
+    <script language="JavaScript">
+        cou1='0';cou2='0';cou3='0';
+        function changecouleur(){
+            switch(cou1) {
+                case "C" : cou1="F"; break;
+                case "6" : cou1="9"; break;
+                case "0" : cou1="3"; break;
+
+                case "3" : cou1="6"; break;
+
+                case "9" : cou1="C"; break;
+
+                case "F" : cou1="0";  cou2aj(); break;
+            }
+            document.getElementById("divi").style.color= cou3 + cou3 +cou2 + cou2 + cou1 + cou1;
+            window.setTimeout('changecouleur();', 100);
+        }
+        function cou2aj(){
+            switch(cou2) {
+                case "C" : cou2="F"; break;
+                case "3" : cou2="6"; break;
+
+
+                case "6" : cou2="9"; break;
+                case "0" : cou2="3"; break;
+                case "9" : cou2="C"; break;
+
+                case "F" : cou2="0";  cou3aj(); break;
+            }
+        }
+        function cou3aj(){
+            switch(cou3) {
+                case "0" : cou3="3"; break;
+                case "3" : cou3="6"; break;
+                case "6" : cou3="9"; break;
+                case "9" : cou3="C"; break;
+                case "C" : cou3="F"; break;
+                case "F" : cou3="0";  break;
+            }
+        }
+    </script>
+    <title>Document sans titre</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <body>
 
@@ -254,5 +298,14 @@
         </a>
     </div>
 </div>
+
+<body bgcolor="#FFFFFF" onLoad="changecouleur();">
+<div id="divi" style="color : #000000">
+    <strong><font size="5.7"><p>© 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz, Stéphane Lay, Raphael Gruet</p></font></strong>
+</div>
 </body>
+
 </html>
+
+
+
