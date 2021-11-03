@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link href="icones/accueil.png" rel="icon" type="image/png"/>
+    <link href="style.css" rel="stylesheet">
+
+    <script>
+        /* change the color every second */
+        setInterval(function () {
+            document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
+        }, 1000);
+    </script>
+</head>
+
+<body style="display: block">
+<h1 id="title" style="transition: color 1s">Bienvenue sur le projet PHP 2021</h1>
+<div style="justify-content: center; display: flex">
+    <form class="box" style="padding: 5rem">
+        <button onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
+        &nbsp&nbsp&nbsp&nbsp
+        <button onclick="location.href ='simulation.php'" type="button">Simulation</button>
+        <br>
+        <br>
+        <br>
+        <button onclick="location.href ='/readme/readme.html'" type="button">Readme</button>
+        &nbsp&nbsp&nbsp&nbsp
+        <button onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');" type="button">Github
+        </button>
+    </form>
+</div>
+</body>
+</html>

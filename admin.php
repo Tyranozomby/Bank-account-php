@@ -28,7 +28,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
 <head>
     <title>Admin</title>
-    <link rel="icon" type="image/png" href="icones/login.png" />
+    <link rel="icon" type="image/png" href="icones/login.png"/>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stylePopUp.css">
     <link rel="stylesheet" href="admin.css">

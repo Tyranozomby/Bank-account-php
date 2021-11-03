@@ -20,6 +20,10 @@ body {
     font-family: arial, sans-serif;
 }
 
+h1 {
+    font-weight: bold;
+    font-size: xxx-large;
+}
 
 .box {
     width: 25rem;
@@ -168,6 +172,7 @@ td, th {
     border: 2px solid var(--bleu-table);
     padding: 8px;
 }
-:visited{
+
+:visited {
     color: rgb(228, 157, 25);
 }
