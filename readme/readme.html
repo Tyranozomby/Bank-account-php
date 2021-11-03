@@ -2,7 +2,8 @@
 <html lang="fr">
 <meta charset="UTF-8">
 <head>
-    <link href="style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../icones/readme.png" />
+    <link href="../style.css" rel="stylesheet">
     <style>
         body {
             flex-direction: column;
@@ -41,7 +42,7 @@
 
 <p>Ceci est la documentation de notre projet PHP</p>
 
-<A HREF="Projet PHP 2021.pdf">Sujet du projet</A>
+<A HREF="../Projet%20PHP%202021.pdf">Sujet du projet</A>
 
 <div class="box">
     <h2 id="table-des-mati-res">Table des matières</h2>
@@ -58,6 +59,8 @@
                 <li><a href="#description">Description</a></li>
                 <li><a href="#schema">Schéma</a></li>
             </ul>
+        </li>
+        <li><a href="#telecharger">Telecharger le PDF</a>
         </li>
     </ul>
 </div>
@@ -229,10 +232,27 @@
 
     <div class="box">
         <h3 id="schema">Schéma</h3>
-        <p><img alt="" src="architecture.png" style="width: 80%"></p>
+        <p><img alt="" src="../architecture.png" style="width: 80%"></p>
     </div>
 
 
+</div>
+<style>
+    .centrer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="box">
+    <h3 id="telecharger">Telecharger le pdf</h3>
+    <br></br>
+    <div class="box">
+        <p>Telecharger le fichier en pdf</p>
+        <a download="readme.pdf" href="/readme/readme.pdf" title="Telecharger le fichier en pdf" >
+            <img src="../icones/donwload.gif" class="centrer" height="42" width="48" download="readme.pdf" />
+        </a>
+    </div>
 </div>
 </body>
 </html>

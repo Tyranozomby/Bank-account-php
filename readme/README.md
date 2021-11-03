@@ -132,5 +132,5 @@ Format :
 
 ### Schéma
 
-![](architecture.png)
+![](../architecture.png)
 
