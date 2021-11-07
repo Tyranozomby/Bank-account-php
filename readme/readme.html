@@ -1,8 +1,11 @@
 <html lang="fr">
 <meta charset="UTF-8">
+
 <head>
+    <title>Documentation du projet</title>
     <link href="../icones/readme.png" rel="icon" type="image/png"/>
     <link href="../style.css" rel="stylesheet">
+
     <style>
         body {
             flex-direction: column;
@@ -15,9 +18,15 @@
         .box {
             display: flex;
             flex-direction: column;
-            text-align: left;
+            justify-content: center;
             margin: 2%;
             width: fit-content;
+        }
+
+        .centrer {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .box h2 {
@@ -33,24 +42,21 @@
             color: var(--gris-clair)
         }
     </style>
-    <title>Documentation du projet</title>
-    <script language="JavaScript">
+
+    <script>
         /*couleur qui change*/
-        /* change the color every second */
         setInterval(function () {
             document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
         }, 700);
     </script>
-    <title>Document sans titre</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <body>
 
-<h1 id="bank-account-php">Projet de Simulation de pret PHP</h1>
+<h1 id="bank-account-php">Projet de Simulation de prêt PHP</h1>
 
 <p>Ceci est la documentation de notre projet PHP</p>
 
-<A HREF="Projet%20PHP%202021.pdf">Sujet du projet</A>
+<a href="Projet%20PHP%202021.pdf">Sujet du projet</a>
 
 <div class="box">
     <h2 id="table-des-mati-res">Table des matières</h2>
@@ -68,7 +74,7 @@
                 <li><a href="#schema">Schéma</a></li>
             </ul>
         </li>
-        <li><a href="#telecharger">Telecharger le PDF</a>
+        <li><a href="#telecharger">Télécharger le PDF</a>
         </li>
     </ul>
 </div>
@@ -242,32 +248,25 @@
         <h3 id="schema">Schéma</h3>
         <p><img alt="" src="architecture.png" style="width: 80%"></p>
 
-        <a href="/readme/architecture.png" title="Schema" target="_blank">
-            <img class="centrer" height="42" src="../icones/oeil.png" width="48"/>
+        <a class="centrer" href="/readme/architecture.png" title="Schema" target="_blank">
+            <img src="../icones/oeil.png" width="48"/>
         </a>
     </div>
 
 
 </div>
-<style>
-    .centrer {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 <div class="box">
     <h4 id="telecharger">Télécharger le pdf</h4>
     <br><br>
     <div class="box">
         <p>Télécharger le fichier en pdf</p>
-        <a download="readme.pdf" href="/readme/readme.pdf" title="Télécharger le fichier en pdf">
-            <img class="centrer" height="42" src="../icones/donwload.gif" width="48"/>
+        <a class="centrer" download="readme.pdf" href="/readme/readme.pdf" title="Télécharger le fichier en pdf">
+            <img src="../icones/download.gif" width="48" alt=""/>
         </a>
     </div>
 </div>
 <div style="justify-content: center">
-    <p id="title" style="transition: color 1s" FONT size=8pt">© 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz,
+    <p id="title" style="transition: color 1s; font-size: 1.2rem">© 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz,
         Stéphane Lay, Raphael Gruet</p>
 </div>
 </body>
