@@ -16,12 +16,12 @@ function calcul(): float|false|null
     }
 
     // Vérifie que ce sont bien des nombres
-    if (is_numeric($_GET["capital"]) and is_numeric($_GET["nombre_mois"]) and is_numeric($_GET["taux"])) {
+    if (!is_numeric($_GET["capital"]) or !is_numeric($_GET["nombre_mois"]) or !is_numeric($_GET["taux"])) {
         return false;
     }
 
     // Vérifie que les nombres sont valides
-    if ($_GET["capital"] > 0 and $_GET["nombre_mois"] > 0 and $_GET["taux"] > 0) {
+    if ($_GET["capital"] <= 0 or $_GET["nombre_mois"] <= 0 or $_GET["taux"] <= 0) {
         return false;
     }
 
