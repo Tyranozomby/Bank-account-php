@@ -10,17 +10,18 @@ require_once "logmanagement.php";
 
 function calcul(): float|false|null
 {
-// Vérifie l'existence des variables nécessaires au calcul sinon redirige
+// Vérifie l'existence des variables nécessaires au calcul
     if (!isset($_GET["capital"], $_GET["nombre_mois"], $_GET["taux"])) {
         return null;
     }
-    // Crée les variables $capital, $nombre_mois, $taux en vérifiant que ce sont bien des nombres sinon redirige
 
-    if (!is_numeric($_GET["capital"]) or !is_numeric($_GET["nombre_mois"]) or !is_numeric($_GET["taux"])) {
+    // Vérifie que ce sont bien des nombres
+    if (is_numeric($_GET["capital"]) and is_numeric($_GET["nombre_mois"]) and is_numeric($_GET["taux"])) {
         return false;
     }
 
-    if ($_GET["capital"] < 0 or $_GET["nombre_mois"] < 0 or $_GET["taux"] <= 0) {
+    // Vérifie que les nombres sont valides
+    if ($_GET["capital"] > 0 and $_GET["nombre_mois"] > 0 and $_GET["taux"] > 0) {
         return false;
     }
 
