@@ -6,6 +6,8 @@
 </head>
 
 <body>
+<script src="/librairies/jquery.js"></script>
+<script src="/librairies/tilt.js"></script>
 <SCRIPT language="JavaScript">
     /*FAIRE DES FLOCONS QUI BOUGE
     Source :  http://www.editeurjavascript.com
@@ -129,17 +131,23 @@
 </body>
 
 <body style="display: block">
-<font size="+4"><p id="title" class="titre" style="transition: color 1s" FONT size="10pt">Bienvenue sur le projet PHP 2021</p></font>
+<p id="title" class="titre" style="transition: color 1s">Bienvenue sur le projet PHP 2021</p>
 
-<div style="justify-content: center; display: flex ">
-    <form class="box">
-        <button type="button" onclick="location.href ='adminlogin.php'">Connexion </button>
-        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <button  type="button" onclick="location.href ='simulation.php'">Simulation</button>
-        <br><br><br><br>
-        <button type="button" onclick="location.href ='readme/readme.html'">Readme</button>
-        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <button type="button" onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');">Github</button>
+<div class="boxbouton" data-tilt data-tilt-scale="1.10" style="justify-content: center; display: flex  ">
+    <form class="box" >
+        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='adminlogin.php'">Connexion</button>
+        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='simulation.php'">Simulation</button>
+        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='readme/readme.html'">Readme</button>
+        <button data-tilt data-tilt-max="20"  type="button" onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');">Github</button>
     </form>
 </div>
+<div class="boxbouton" data-tilt data-tilt-scale="1.25" data-tilt-reverse="true">
+    <a href="#" class="btn">
+        Pas encore dispo
+    </a>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+</body>
+</html>
+
 

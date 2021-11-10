@@ -8,25 +8,30 @@
     --deg2: #092eef;
     --error: #be0000;
     --success: limegreen;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body {
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
     background: repeating-linear-gradient(85deg, var(--deg1), var(--deg2)) fixed;
     font-family: arial, sans-serif;
 }
 .titre{
+    font-size: 2rem;
     padding-top: 8rem;
 }
 .box {
-    width: 35rem;
+    width: 40rem;
     font-size: 1.4rem;
     background: var(--gris);
     box-shadow: 50px 50px 30px -8px var(--shadow);
-    padding: 4.5rem 4.5rem 4.5rem 4.5rem;
-    margin-top: 5rem;
+    padding: 8.5rem 8.5rem 8.5rem 8.5rem;
+    margin-top: 6rem;
+    padding: 5rem;
     border-left: 6px solid var(--gris);
     border-top: 6px solid var(--gris);
     border-right: 6px solid var(--gris);
@@ -43,21 +48,22 @@ body {
 
 
 button {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
     border: 0px;
     background: transparent;
     position: relative;
-    transition: all .2s;
+    transition: all 0.0s;
     overflow: hidden;
     color: #fff;
     border-radius: 30px;
     box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
     cursor: pointer;
-    padding: 1.5rem;
-    border-radius: 50px;
-    width: 200px;
+    padding: 1.7rem;
+    border-radius: 20px;
+    width: 250px;
     text-align: center;
+    margin: 30px;
 }
 
 button::after {
@@ -69,36 +75,37 @@ button::after {
     left: -100px;
     background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
     z-index: -1;
-    transition: all .5s;
+    transition: all 0.0s;
 }
 
 button:hover::after {
-    transform: rotate(150deg);
+    transform: rotate(140deg);
 }
 
 button:hover {
     transform: translate(0,-6px);
+    border-radius: 35px;
     box-shadow: 10px -10px 25px 0px rgba(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
 }
 
 
+.btn {
+    border-top: 6px;
+    font-family: arial;
+    letter-spacing: 2px;
+    font-size: 22px;
+    background: #fc5185;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 0 60px -10px #CD106E;
+    transition: all .3s;
+    text-decoration: none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.btn:hover {
+    box-shadow: 0 8px 65px -5px #CD106E;
+}
 
 
 
