@@ -1,148 +1,94 @@
-<html>
+<html lang="fr">
 <head>
-    <title>Acceuil</title>
-    <link rel="icon" type="image/png" href="icones/accueil.png" />
-    <link rel="stylesheet" href="styleAccueil.css">
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="styleAccueil.css" rel="stylesheet">
+    <link href="icones/accueil.png" rel="icon" type="image/png"/>
+    <script>
+        /*FAIRE DES FLOCONS QUI BOUGENT
+            Source :  http://www.editeurjavascript.com
+            Adaptation : http://www.outils-web.com
+            Sur-adaptation++ : Eliott ☺
+        */
+        const snow_src = "icones/flocons.png";
+        const snow_nb = 10;
+        let dx, x, y;
+        let angle, rot, x_speed, y_speed;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        x = [];
+        y = [];
+        dx = []; // Écart entre axe x et position avec angle
+        angle = []; // Mouvement angulaire / angular momentum
+        rot = []; // Rotation
+        x_speed = []; // Vitesse gauche-droite
+        y_speed = []; // Vitesse chute
+
+        // Initialisation
+        for (let i = 0; i < snow_nb; ++i) {
+            dx[i] = 0;
+            x[i] = Math.random() * (width - 50);
+            y[i] = Math.random() * height;
+            angle[i] = Math.random() * 20;
+            rot[i] = Math.floor(Math.random() * 90);
+            x_speed[i] = random_x_speed();
+            y_speed[i] = random_y_speed();
+            document.write("<div id=dot" + i + " style='position: absolute; z-index: -1;'><img src='" + snow_src + "' style='transform: rotate(" + rot[i] + "deg)' alt='flocon'></div>");
+        }
+
+        setInterval(function () { // Boucle principale
+            for (let i = 0; i < snow_nb; ++i) {
+                y[i] += y_speed[i];
+                if (y[i] > height - 50) {
+                    x[i] = Math.random() * (width - angle[i] - 30);
+                    y[i] = 0;
+                    x_speed[i] = random_x_speed();
+                    y_speed[i] = random_y_speed();
+                }
+                dx[i] += x_speed[i];
+                document.getElementById("dot" + i).style.top = y[i];
+                document.getElementById("dot" + i).style.left = x[i] + angle[i] * Math.sin(dx[i]);
+            }
+        }, 20)
+
+
+        function random_x_speed() {
+            return 0.02 + Math.random() / 10;
+        }
+
+        function random_y_speed() {
+            return 0.7 + Math.random();
+        }
+
+    </script>
+
+    <script>
+        /*couleur qui change*/
+        setInterval(function () {
+            document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
+        }, 750);
+    </script>
 </head>
 
-<body>
-<script src="/librairies/jquery.js"></script>
-<script src="/librairies/tilt.js"></script>
-<SCRIPT language="JavaScript">
-    /*FAIRE DES FLOCONS QUI BOUGE
-    Source :  http://www.editeurjavascript.com
-     Adaptation : http://www.outils-web.com
-    */
-    /* url de votre image*/
-    var snowsrc="icones/flocons.png"
-    var no = 10;
-    var ns4up = (document.layers) ? 1 : 0;
-    var ie4up = (document.all) ? 1 : 0;
-    var nn6up = (document.getElementById) ? 1 : 0;
-    var dx, xp, yp;
-    var am, stx, sty;
-    var i, doc_width = 800, doc_height = 600;
-
-    if (ns4up) {
-        doc_width = self.innerWidth;
-        doc_height = self.innerHeight;
-    } else if (ie4up) {
-        doc_width = document.body.clientWidth;
-        doc_height = document.body.clientHeight;
-    } else if (nn6up) {
-        doc_width = self.innerWidth;
-        doc_height = self.innerHeight;}
-
-    dx = new Array();
-    xp = new Array();
-    yp = new Array();
-    am = new Array();
-    stx = new Array();
-    sty = new Array();
-
-    for (i = 0; i < no; ++ i) {
-        dx[i] = 0;
-        xp[i] = Math.random()*(doc_width-50);
-        yp[i] = Math.random()*doc_height;
-        am[i] = Math.random()*20;
-        stx[i] = 0.02 + Math.random()/10;
-        sty[i] = 0.7 + Math.random();
-        if (ns4up) {
-            if (i == 0) {
-                document.write("<layer name=dot"+ i +" left=15 top=15 visibility=show><img src='"+snowsrc+"' border=0></layer>");
-            } else {
-                document.write("<layer name=dot"+ i +" left=15 top=15 visibility=show><img src='"+snowsrc+"' border=0></layer>");
-            }
-        } else if (ie4up || nn6up) {
-            if (i == 0) {        document.write("<div id=dot"+ i +" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><img src='"+snowsrc+"' border=0></div>");
-            } else {
-                document.write("<div id=dot"+ i +" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px; LEFT: 15px;\"><img src='"+snowsrc+"' border=0></div>");
-            }
-        }
-    }
-    function snowNS() {
-        for (i = 0; i < no; ++ i) {
-            yp[i] += sty[i];
-            if (yp[i] > doc_height-50) {
-                xp[i] = Math.random()*(doc_width-am[i]-30);
-                yp[i] = 0;
-                stx[i] = 0.02 + Math.random()/10;
-                sty[i] = 0.7 + Math.random();
-                doc_width = self.innerWidth;
-                doc_height = self.innerHeight;
-            }
-            dx[i] += stx[i];
-            document.layers["dot"+i].top = yp[i];
-            document.layers["dot"+i].left = xp[i] + am[i]*Math.sin(dx[i]);
-        }
-        setTimeout("snowNS()", 10);
-    }
-
-    function snowIE() {
-        for (i = 0; i < no; ++ i) {
-            yp[i] += sty[i];
-            if (yp[i] > doc_height-50) {
-                xp[i] = Math.random()*(doc_width-am[i]-30);
-                yp[i] = 0;
-                stx[i] = 0.02 + Math.random()/10;
-                sty[i] = 0.7 + Math.random();
-                doc_width = document.body.clientWidth;
-                doc_height = document.body.clientHeight;
-            }
-            dx[i] += stx[i];
-            document.all["dot"+i].style.pixelTop = yp[i];
-            document.all["dot"+i].style.pixelLeft = xp[i] + am[i]*Math.sin(dx[i]);
-        }
-        setTimeout("snowIE()", 10);
-    }
-    function snowNN6() {
-        for (i = 0; i < no; ++ i) {
-            yp[i] += sty[i];
-            if (yp[i] > doc_height-50) {
-                xp[i] = Math.random()*(doc_width-am[i]-30);
-                yp[i] = 0;
-                stx[i] = 0.02 + Math.random()/10;
-                sty[i] = 0.7 + Math.random();
-                doc_width = self.innerWidth;
-                doc_height = self.innerHeight;
-            }
-            dx[i] += stx[i];
-            document.getElementById("dot"+i).style.top = yp[i];
-            document.getElementById("dot"+i).style.left = xp[i] + am[i]*Math.sin(dx[i]);
-        }
-        setTimeout("snowNN6()", 10);
-    }
-    if (ns4up) {
-        snowNS();
-    } else if (ie4up) {
-        snowIE();
-    } else if (nn6up) {
-        snowNN6();
-    }
-    /*couleur qui change*/
-    /* change the color every second */
-    setInterval(function () {
-        document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
-    },700);
-
-
-
-</SCRIPT>
-</body>
-
 <body style="display: block">
-<p id="title" class="titre" style="transition: color 1s">Bienvenue sur le projet PHP 2021</p>
+<p class="titre" id="title" style="transition: color 1s; font-weight: bold; font-size: xxx-large">Bienvenue sur le
+    projet PHP 2021</p>
 
-<div class="boxbouton" data-tilt data-tilt-scale="1.10" style="justify-content: center; display: flex  ">
-    <form class="box" >
-        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='adminlogin.php'">Connexion</button>
-        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='simulation.php'">Simulation</button>
-        <button data-tilt data-tilt-max="20"  type="button" onclick="location.href ='readme/readme.html'">Readme</button>
-        <button data-tilt data-tilt-max="20"  type="button" onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');">Github</button>
+<div data-tilt data-tilt-scale="1" style="justify-content: center; display: flex">
+    <form class="box">
+        <button data-tilt data-tilt-max="20" onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
+        <button data-tilt data-tilt-max="20" onclick="location.href ='simulation.php'" type="button">Simulation</button>
+        <button data-tilt data-tilt-max="20" onclick="location.href ='readme/readme.html'" type="button">Readme</button>
+        <button data-tilt data-tilt-max="20"
+                onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');"
+                type="button">Github
+        </button>
     </form>
 </div>
-<div class="boxbouton" data-tilt data-tilt-scale="1.25" data-tilt-reverse="true">
-    <a href="#" class="btn">
+<div class="boxbouton" data-tilt data-tilt-reverse="true" data-tilt-scale="1.25">
+    <a class="btn" href="#">
         Pas encore dispo
     </a>
 </div>

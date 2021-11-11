@@ -1,15 +1,5 @@
-:root {
-    --gris: rgba(255, 255, 255, .3);
-    --gris-clair: rgba(255, 255, 255, .5);
-    --input: #bda7eb;
-    --shadow: rgba(0, 0, 0, .2);
-    --bleu-table: #6495ed;
-    --deg1: #da429f;
-    --deg2: #092eef;
-    --error: #be0000;
-    --success: limegreen;
+html {
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 body {
@@ -19,17 +9,19 @@ body {
     text-align: center;
     background: repeating-linear-gradient(85deg, var(--deg1), var(--deg2)) fixed;
     font-family: arial, sans-serif;
+    padding-top: 0;
 }
-.titre{
+
+.titre {
     font-size: 2rem;
     padding-top: 8rem;
 }
+
 .box {
     width: 40rem;
     font-size: 1.4rem;
     background: var(--gris);
     box-shadow: 50px 50px 30px -8px var(--shadow);
-    padding: 8.5rem 8.5rem 8.5rem 8.5rem;
     margin-top: 6rem;
     padding: 5rem;
     border-left: 6px solid var(--gris);
@@ -50,15 +42,13 @@ body {
 button {
     font-size: 1.7rem;
     cursor: pointer;
-    border: 0px;
+    border: 0;
     background: transparent;
     position: relative;
     transition: all 0.0s;
     overflow: hidden;
     color: #fff;
-    border-radius: 30px;
-    box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
-    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(143, 64, 248, .5), 0 0 0 0 rgba(39, 200, 255, .5);
     padding: 1.7rem;
     border-radius: 20px;
     width: 250px;
@@ -83,15 +73,15 @@ button:hover::after {
 }
 
 button:hover {
-    transform: translate(0,-6px);
+    transform: translate(0, -6px);
     border-radius: 35px;
-    box-shadow: 10px -10px 25px 0px rgba(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, .25), -10px 10px 25px 0 rgba(39, 200, 255, .25);
 }
 
 
 .btn {
     border-top: 6px;
-    font-family: arial;
+    font-family: arial, serif;
     letter-spacing: 2px;
     font-size: 22px;
     background: #fc5185;
