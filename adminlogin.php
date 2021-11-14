@@ -39,6 +39,11 @@
         <br/>
         <button type='submit'>Connexion</button>
     </form>
+
+    </br></br> </br></br>
+    <a class="centrer" href="index.html" title="Accueil">
+        <img src="../icones/accueil.png" width="48" alt=""/>
+    </a>
 </div>
 </body>
 </html>

@@ -1,34 +1,100 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Accueil</title>
-    <link href="icones/accueil.png" rel="icon" type="image/png"/>
     <link href="style.css" rel="stylesheet">
+    <link href="styleAccueil.css" rel="stylesheet">
+    <link href="icones/accueil.png" rel="icon" type="image/png"/>
+    <script>
+        /*FAIRE DES FLOCONS QUI BOUGENT
+            Source :  http://www.editeurjavascript.com
+            Adaptation : http://www.outils-web.com
+            Sur-adaptation++ : Eliott ☺
+        */
+        const snow_src = "icones/flocons.png";
+        const snow_nb = 10;
+        let dx, x, y;
+        let angle, rot, x_speed, y_speed;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        x = [];
+        y = [];
+        dx = []; // Écart entre axe x et position avec angle
+        angle = []; // Mouvement angulaire / angular momentum
+        rot = []; // Rotation
+        x_speed = []; // Vitesse gauche-droite
+        y_speed = []; // Vitesse chute
+
+        // Initialisation
+        for (let i = 0; i < snow_nb; ++i) {
+            dx[i] = 0;
+            x[i] = Math.random() * (width - 50);
+            y[i] = Math.random() * height;
+            angle[i] = Math.random() * 20;
+            rot[i] = Math.floor(Math.random() * 90);
+            x_speed[i] = random_x_speed();
+            y_speed[i] = random_y_speed();
+            document.write("<div id=dot" + i + " style='position: absolute; z-index: -1;'><img src='" + snow_src + "' style='transform: rotate(" + rot[i] + "deg)' alt='flocon'></div>");
+        }
+
+        setInterval(function () { // Boucle principale
+            for (let i = 0; i < snow_nb; ++i) {
+                y[i] += y_speed[i];
+                if (y[i] > height - 50) {
+                    x[i] = Math.random() * (width - angle[i] - 30);
+                    y[i] = 0;
+                    x_speed[i] = random_x_speed();
+                    y_speed[i] = random_y_speed();
+                }
+                dx[i] += x_speed[i];
+                document.getElementById("dot" + i).style.top = y[i];
+                document.getElementById("dot" + i).style.left = x[i] + angle[i] * Math.sin(dx[i]);
+            }
+        }, 20)
+
+
+        function random_x_speed() {
+            return 0.02 + Math.random() / 10;
+        }
+
+        function random_y_speed() {
+            return 0.7 + Math.random();
+        }
+
+    </script>
 
     <script>
-        /* change the color every second */
-        setInterval(function () {
+        /*couleur qui change*/
+        setInterval(function (e) {
             document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
-        }, 1000);
+        }, 750);
     </script>
 </head>
 
 <body style="display: block">
-<h1 id="title" style="transition: color 1s">Bienvenue sur le projet PHP 2021</h1>
-<div style="justify-content: center; display: flex">
-    <form class="box" style="padding: 5rem">
-        <button onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
-        &nbsp&nbsp&nbsp&nbsp
-        <button onclick="location.href ='simulation.php'" type="button">Simulation</button>
-        <br>
-        <br>
-        <br>
-        <button onclick="location.href ='readme/readme.html'" type="button">Readme</button>
-        &nbsp&nbsp&nbsp&nbsp
-        <button onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');" type="button">Github
+<p class="titre" id="title" style="transition: color 1s; font-weight: bold; font-size: xxx-large">Bienvenue sur le projet PHP 2021</p>
+
+<div data-tilt data-tilt-scale="1" style="justify-content: center; display: flex">
+    <form class="box">
+        <button data-tilt data-tilt-max="20" onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
+        <button data-tilt data-tilt-max="20" onclick="location.href ='simulation.php'" type="button">Simulation</button>
+        <button data-tilt data-tilt-max="20" onclick="location.href ='readme/readme.html'" type="button">Readme</button>
+        <button data-tilt data-tilt-max="20"
+                onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');"
+                type="button">Github
         </button>
     </form>
 </div>
+<!--
+<div class="boxbouton" data-tilt data-tilt-reverse="true" data-tilt-scale="1.25">
+    <a class="btn" href="#">
+        Pas encore dispo
+    </a>
+</div>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 </body>
 </html>
+
+
