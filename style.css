@@ -1,10 +1,10 @@
 :root {
     --gris: rgba(255, 255, 255, .3);
     --gris-clair: rgba(255, 255, 255, .5);
-    --input: #bda7eb;
+    --input: #e0d8f0;
     --shadow: rgba(0, 0, 0, .2);
     --bleu-table: #6495ed;
-    --deg1: #da429f;
+    --deg1: #da2093;
     --deg2: #092eef;
 
     --error: #be0000;
@@ -16,7 +16,7 @@ body {
     padding-top: 8rem;
     justify-content: center;
     text-align: center;
-    background: repeating-linear-gradient(85deg, var(--deg1), var(--deg2)) fixed;
+    background: repeating-linear-gradient(85deg, #b75190, var(--deg2)) fixed;
     font-family: arial, sans-serif;
 }
 
@@ -75,7 +75,7 @@ input {
 }
 
 input:hover, input:focus {
-    background: rgba(200, 125, 205, 0.5);
+    background: rgb(213 157 217 / 50%);
     transition: all .3s;
 }
 
@@ -119,7 +119,7 @@ option {
 .popButton {
     text-decoration: none;
     padding: 8px;
-    background-color: rgba(41, 168, 241, 0.5);
+    background-color: rgb(56 182 255 / 90%);
     border-radius: 20px;
     color: white;
     border: 2px solid var(--gris-clair);
@@ -127,7 +127,7 @@ option {
 }
 
 .popButton:hover {
-    background: rgba(207, 218, 57, 0.733) !important;
+    background: rgb(214 226 44 / 83%) !important;
     transition: all .3s;
 }
 

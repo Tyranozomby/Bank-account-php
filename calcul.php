@@ -25,6 +25,9 @@ function calcul(): float|false|null
         return false;
     }
 
+    if($_GET["nombre_mois"] >= 9999999999 || $_GET["capital"]>= 9999999999){
+        return false;
+    }
 
     $capital = round($_GET["capital"], 2);
     $nombre_mois = round($_GET["nombre_mois"]);

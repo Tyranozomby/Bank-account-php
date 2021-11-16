@@ -75,6 +75,10 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             ?>
         </select>
     </form>
+    <a class="boutonAccueil" href="index.html" title="Accueil" >
+        <img src="../icones/accueil.png" width="48" alt=""/>
+    </a>
+
 </div>
 
 <?php if (!$isarchive) { ?>
@@ -86,7 +90,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             <form method='get' action='processlog.php'>
                 <p> Nom du fichier :</p>
                 <label for="archiver"></label>
-                <input type='text' id="archiver" name='archiver' autocomplete="false"
+                <input type='text' id="archiver" pattern="[A-Za-z]{2,20}" name='archiver' autocomplete="false"
                        required>
                 <br/>
                 <button type="submit">Enregistrer</button>
