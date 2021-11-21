@@ -19,7 +19,6 @@ body {
     position: relative;
     border-radius: 3%;
     border: 7px solid rgb(224, 221, 221);
-    border: 7px solid rgba(222, 215, 215, 0.3);
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 }
@@ -73,8 +72,15 @@ body {
 .boutonAccueil{
     justify-content:center;
     display: flex;
-    padding-top: 25px;
+    width: fit-content;
+    height: fit-content;
+    margin: 25px auto;
 }
 
 
-
+.innerbox {
+    background: rgb(31, 31, 3);
+    height: 100%;
+    width: 100%;
+    border-radius: 1.8%;
+}

@@ -8,13 +8,13 @@
     <script>
         /* CLIC Droit sur la page index.php */
         if (document.addEventListener) { // IE >= 9; other browsers
-            document.addEventListener('contextmenu', function(e) {
-                window.open("clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+            document.addEventListener('contextmenu', function (e) {
+                window.open("clic/index.php", " ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
                 e.preventDefault();
             }, false);
         } else { // IE < 9
-            document.attachEvent('oncontextmenu', function() {
-                window.open("clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+            document.attachEvent('oncontextmenu', function () {
+                window.open("clic/index.php", " ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
                 window.event.returnValue = false;
             });
         }
@@ -89,18 +89,16 @@
 
 <div style="justify-content: center; display: flex">
     <form data-tilt data-tilt-max="5" class="box">
-        <button  onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
-        <button  onclick="location.href ='simulation.php'" type="button">Simulation</button>
-        <button  onclick="location.href ='readme/readme.html'" type="button">Readme</button>
-        <button  onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');" type="button">Github</button>
+        <button onclick="location.href ='adminlogin.php'" type="button">Connexion</button>
+        <button onclick="location.href ='simulation.php'" type="button">Simulation</button>
+        <button onclick="location.href ='readme/readme.html'" type="button">Readme</button>
+        <button onclick="location.href ='https://github.com/Tyranozomby/Bank-account-php'" type="button">Github</button>
+        <button class="btn" type="button" onclick="location.href ='clic/index.php'">
+            En savoir plus
+        </button>
     </form>
 </div>
 
-<div class="boxbouton" data-tilt data-tilt-reverse="true" data-tilt-scale="1.20">
-    <a class="btn" href="clic/index.php">
-        En savoir plus
-    </a>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 </body>
