@@ -15,6 +15,7 @@ body {
     display: flex;
     padding-top: 8rem;
     justify-content: center;
+    align-items: center;
     text-align: center;
     background: repeating-linear-gradient(85deg, #b75190, var(--deg2)) fixed;
     font-family: arial, sans-serif;
@@ -31,11 +32,11 @@ h1 {
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
 
-    margin-top: 3rem;
-    padding: 3rem 3rem 2.5rem 3rem;
+    margin-top: 5rem;
+    padding: 3rem;
 
-    border-left: 3px solid var(--gris);
-    border-top: 3px solid var(--gris);
+    border: 6px solid var(--gris);
+
     border-radius: 40px;
 }
 
@@ -101,6 +102,7 @@ button, select, .button {
     font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
+    transition: all .3s;
 }
 
 button:hover:enabled, select:hover, .button:hover {
@@ -173,6 +175,3 @@ td, th {
     padding: 8px;
 }
 
-:visited {
-    color: rgb(228, 157, 25);
-}
