@@ -21,6 +21,9 @@ if (isset($_GET["archiver"])) {
             exit();
         }
         rename(get_full_log_file_path(), $fullpath);
+        ensure_log_file_exists();
+        header("Location: admin.php?archive=$nomFichier");
+        exit();
     }
 
 
@@ -28,7 +31,7 @@ if (isset($_GET["archiver"])) {
     header("Location: adminlogin.php?stat=1");
     //vider logs
     unlink(get_full_log_file_path());
-    fclose(open_log_file());
+    ensure_log_file_exists();
 } else if (isset($_GET["supprimer"], $_GET["archive"])) {
     header("Location: adminlogin.php?stat=1");
     $archive = $_GET['archive'];

@@ -18,6 +18,27 @@ function get_full_log_file_path(): string
     return $logs_folder . "/" . $log_file_name;
 }
 
+function ensure_log_file_exists(string $filename = null): string
+{
+    global $log_file_name, $logs_folder, $log_header;
+    $file = $logs_folder . "/" . ($filename ?? $log_file_name);
+
+    if (!file_exists($logs_folder)) {
+        mkdir("archives");
+    } else if (!is_dir($logs_folder)) {
+        return false;
+    }
+    if (!file_exists($file)) {
+        $f = fopen($file, 'w');
+        flock($f, LOCK_EX);
+        fputcsv($f, $log_header, ";");
+        flock($f, LOCK_UN);
+        fclose($f);
+        return $file;
+    }
+    return $file;
+}
+
 /**
  * @param string | null
  * @param bool $read
@@ -28,25 +49,11 @@ function open_log_file(string $file_name = null, bool $read = false)
 {
     global $log_file_name, $log_header, $logs_folder;
 
-    $file = $logs_folder . "/" . ($file_name ?? $log_file_name);
-
-    if (!file_exists($logs_folder)) {
-        mkdir("archives");
-    } else if (!is_dir($logs_folder)) {
-        return false;
-    }
-
-    // Crée le fichier et ajoute les colonnes s'il n'existe pas
-    if (!file_exists($file)) {
-        $f = fopen($file, 'w' . ($read ? '+' : ''));
-        flock($f, LOCK_EX);
-        fputcsv($f, $log_header, ";");
-        flock($f, LOCK_UN);
+    $file = ensure_log_file_exists($file_name);
 
 
-    } else {
-        $f = fopen($file, 'a' . ($read ? '+' : ''));
-    }
+    $f = fopen($file, 'a' . ($read ? '+' : ''));
+
 
     if ($read) {
         rewind($f);
@@ -58,6 +65,7 @@ function get_all_log_files(): array
 {
     return array_diff(scandir("archives"), array('.', '..'));
 }
+
 
 function get_logs_data(string $filename = null): false|array
 {
@@ -124,7 +132,7 @@ function print_logs_table(string $filename = null, $limit_from_last = null, arra
             if ($colnum == 2) $coldata = $coldata . " €";
             if ($colnum == 1) {
                 $datetime = date_create_from_format("U", $coldata);
-                date_timezone_set($datetime,timezone_open("Europe/Paris"));
+                date_timezone_set($datetime, timezone_open("Europe/Paris"));
                 $coldata = date_format($datetime, 'Y-m-d H:i:s');
             }
 
