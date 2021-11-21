@@ -6,6 +6,18 @@
     <link href="styleAccueil.css" rel="stylesheet">
     <link href="icones/accueil.png" rel="icon" type="image/png"/>
     <script>
+        /* CLIC Droit sur la page index.php */
+        if (document.addEventListener) { // IE >= 9; other browsers
+            document.addEventListener('contextmenu', function(e) {
+                window.open("/clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+                e.preventDefault();
+            }, false);
+        } else { // IE < 9
+            document.attachEvent('oncontextmenu', function() {
+                window.open("/clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+                window.event.returnValue = false;
+            });
+        }
         /*FAIRE DES FLOCONS QUI BOUGENT
             Source :  http://www.editeurjavascript.com
             Adaptation : http://www.outils-web.com
