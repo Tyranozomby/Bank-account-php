@@ -6,7 +6,7 @@
 
 body {
     height: 100vh;
-    background: #131416;
+    background: #131416!important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,13 @@ body {
 .box{
     width: 600px;
     height: 500px;
-    background: rgb(31,31,3);
+    background: rgb(31,31,3)!important;
     position: relative;
+    border-radius: 3%;
+    border: 7px solid rgb(224, 221, 221);
+    border: 7px solid rgba(222, 215, 215, 0.3);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 }
 
 .box::before,.box::after{
@@ -28,19 +33,20 @@ body {
     #ff0000,#00f0f0,#00ff00,#0000ff,
     #ff0000,#00f0f0,#00ff00,#0000ff,
     #f00f0f);
-    border-radius: 7px;
     width: 100%;
     height: 100%;
     background-size: 500%;
     z-index: -1;
-    transform: scale(1.02);
+    transform: scale(1.05);
     animation: animate 20s infinite;
 }
 
 .box::after{
+    filter: blur(200px);
+}
+.box::before{
     filter: blur(20px);
 }
-
 @keyframes animate {
     0%{background-position: 0 0;}
     50%{background-position: 300% 0;}
@@ -49,25 +55,25 @@ body {
 
 
 .titre{
-    color: aliceblue;
+    color: rgba(240, 248, 255, 0.63);
     text-align:center;
     font-family: arial, sans-serif;
     font-size: 2rem;
-    padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 2.2rem;
 }
 .text{
-    color: aliceblue;
     text-align:center;
     font-family: arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     padding-top: 1rem;
-
+    -webkit-text-fill-color: transparent!important;
+    -webkit-background-clip: text!important;
 }
 .boutonAccueil{
     justify-content:center;
     display: flex;
-    padding-top: 40px;
+    padding-top: 25px;
 }
 
 

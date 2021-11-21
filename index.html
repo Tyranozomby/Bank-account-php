@@ -9,12 +9,12 @@
         /* CLIC Droit sur la page index.php */
         if (document.addEventListener) { // IE >= 9; other browsers
             document.addEventListener('contextmenu', function(e) {
-                window.open("/clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+                window.open("clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
                 e.preventDefault();
             }, false);
         } else { // IE < 9
             document.attachEvent('oncontextmenu', function() {
-                window.open("/clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
+                window.open("clic/index.php"," ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar= no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
                 window.event.returnValue = false;
             });
         }
@@ -95,13 +95,12 @@
         <button data-tilt data-tilt-max="20" onclick="window.open('https://github.com/Tyranozomby/Bank-account-php', '_blank');" type="button">Github</button>
     </form>
 </div>
-<!--
-<div class="boxbouton" data-tilt data-tilt-reverse="true" data-tilt-scale="1.25">
-    <a class="btn" href="#">
-        Pas encore dispo
+<div class="boxbouton" data-tilt data-tilt-reverse="true" data-tilt-scale="1.20">
+    <a class="btn" href="clic/index.php">
+        En savoir plus
     </a>
 </div>
--->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 </body>
 </html>
