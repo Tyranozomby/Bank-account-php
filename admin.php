@@ -9,7 +9,6 @@ if (!isset($_SESSION["admin"]) and $_SESSION["admin"] != "admin") {
 }
 
 $archives = get_all_log_files();
-/** @noinspection PhpUndefinedVariableInspection */
 $selected = $log_file_name;
 
 $isarchive = FALSE;
@@ -50,7 +49,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
     <form method="get" action="processlog.php">
 
         <?php if ($isarchive) { ?>
-            <button type="button" onclick="download('<?php /** @noinspection PhpUndefinedVariableInspection */
+            <button type="button" onclick="download('<?php
             echo "$logs_folder/$selected"; ?>')">Télécharger
             </button>
             <input type="submit" class="button" name="supprimer" value="Supprimer l'archive">
@@ -75,8 +74,8 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             ?>
         </select>
     </form>
-    <a class="boutonAccueil" href="index.html" title="Accueil" >
-        <img src="../icones/accueil.png" width="48" alt=""/>
+    <a class="boutonAccueil" href="index.html" title="Accueil">
+        <img src="icones/accueil.png" width="50" alt=""/>
     </a>
 
 </div>
@@ -95,8 +94,15 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
                 <br/>
                 <button type="submit">Enregistrer</button>
                 <?php
-                if (isset($_GET["stat"]) and $_GET["stat"] == 1) {
-                    echo "<p class='error'>Erreur ce nom existe deja</p>";
+                if (isset($_GET["stat"])) {
+                    switch ($_GET["stat"]) {
+                        case 1:
+                            echo "<p class='error'>Erreur ce nom existe deja</p>";
+                            break;
+                        case 2:
+                            echo "<p class='error'>Erreur</p>";
+                            break;
+                    }
                 }
                 ?>
             </form>

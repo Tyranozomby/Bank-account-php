@@ -15,9 +15,12 @@ if (isset($_GET["archiver"])) {
         header("Location: admin.php?stat=1#archiverPopUp");
         exit();
     } else {
-        //archiver logs
-        /** @noinspection PhpUndefinedVariableInspection */
-        rename(get_full_log_file_path(), "$logs_folder/$nomFichier");
+        $fullpath = "$logs_folder/$nomFichier";
+        if(dirname($fullpath) != "archives"){
+            header("Location: admin.php?stat=2#archiverPopUp");
+            exit();
+        }
+        rename(get_full_log_file_path(), $fullpath);
     }
 
 
@@ -29,7 +32,6 @@ if (isset($_GET["archiver"])) {
 } else if (isset($_GET["supprimer"], $_GET["archive"])) {
     header("Location: adminlogin.php?stat=1");
     $archive = $_GET['archive'];
-    /** @noinspection PhpUndefinedVariableInspection */
     unlink("$logs_folder/$archive");
 }
 
