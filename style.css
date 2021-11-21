@@ -101,6 +101,7 @@ button, select, .button {
     font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
+    transition: all .3s;
 }
 
 button:hover:enabled, select:hover, .button:hover {
