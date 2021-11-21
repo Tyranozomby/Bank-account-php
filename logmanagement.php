@@ -90,19 +90,20 @@ function get_logs_data(string $filename = null): false|array
 
 /**
  * @param string|null $filename
- * @param null $limit_from_last
+ * @param int $limit_from_last
  * @param int[]| null $columns
  * @param array $col_callbacks
  */
-function print_logs_table(string $filename = null, $limit_from_last = null, array $columns = null, array $col_callbacks = [])
+function print_logs_table(string $filename = null, int $limit_from_last = 0, array $columns = null, array $col_callbacks = [])
 {
     $data = get_logs_data($filename);
     if ($data == false) return;
+    $data = array_splice($data,-$limit_from_last);
     $dataSize = count($data);
 
     $header_display = array("IP", "Date", "Montant (€/mois)", "Capital", "Mois", "Taux");
 
-    $limit_from_last ??= $dataSize;
+
     $columns ??= range(0, count($header_display) - 1);
 
 
@@ -121,9 +122,10 @@ function print_logs_table(string $filename = null, $limit_from_last = null, arra
     </thead>";
 
 
-    for ($i = 0; $i < $limit_from_last; $i++) {
-        if ($dataSize - 1 < $i) break;
-        $ligne = $data[$dataSize - 1 - $i];
+
+
+    for ($i = 0; $i < $dataSize; $i++) {
+        $ligne = $data[$i];
 
         echo "<tr>";
         foreach ($columns as $colnum) {

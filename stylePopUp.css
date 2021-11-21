@@ -24,10 +24,11 @@
 .modal_content {
     border-radius: 25px;
     position: relative;
-    width: 730px;
-    height: 560px;
+    width: 40%;
+    height: fit-content;
     max-width: 80%;
     background: rgb(0, 0, 0);
+    padding-bottom: 2%;
 }
 
 .modal_close {
