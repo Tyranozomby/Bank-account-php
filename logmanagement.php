@@ -123,7 +123,9 @@ function print_logs_table(string $filename = null, $limit_from_last = null, arra
             if ($colnum == 5) $coldata = number_format($coldata, 2) . " %";
             if ($colnum == 2) $coldata = $coldata . " €";
             if ($colnum == 1) {
-                $coldata = date_format(date_create_from_format("U", $coldata), 'Y-m-d H:i:s');
+                $datetime = date_create_from_format("U", $coldata);
+                date_timezone_set($datetime,timezone_open("Europe/Paris"));
+                $coldata = date_format($datetime, 'Y-m-d H:i:s');
             }
 
             if (isset($col_callbacks[$colnum])) {
