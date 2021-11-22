@@ -5,6 +5,7 @@
 }
 
 body {
+    cursor:pointer;
     height: 100vh;
     background: #131416!important;
     display: flex;
@@ -84,9 +85,10 @@ body {
     width: 100%;
     border-radius: 1.8%;
 }
+
 #notification {
     position: fixed;
-    bottom: -8rem;
+    bottom: -18rem;
     color: #ff4754;
     background: #000;
     font-size: 1.7rem;
@@ -94,8 +96,56 @@ body {
     padding: 1.2rem 2.4rem;
     border-radius: 0.3rem;
     box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s;
+    transition: all 0.35s;
 }
 #notification.show {
     bottom: 2rem;
 }
+
+.container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.test{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 30px;
+}
+.slot {
+    position: relative;
+    perspective: 1000px;
+}
+.slot div {
+    width: 35px;
+    height: 950px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
