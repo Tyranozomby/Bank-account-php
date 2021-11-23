@@ -5,12 +5,16 @@
 }
 
 body {
-    cursor:pointer;
+    cursor:context-menu;
     height: 100vh;
     background: #131416!important;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    text-align: center;
 }
 
 .box{
@@ -94,7 +98,7 @@ body {
     font-size: 1.7rem;
     font-family: arial, sans-serif;
     padding: 1.2rem 2.4rem;
-    border-radius: 0.3rem;
+    border-radius: 0.7rem;
     box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.4);
     transition: all 0.35s;
 }
@@ -109,8 +113,8 @@ body {
     transform: translate(-50%, -50%);
 }
 .test{
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     position: absolute;
     z-index: -1;
     top: 50%;
@@ -140,10 +144,21 @@ body {
 
 
 
-
-
-
-
+.bg-image {
+    filter: blur(4px) contrast(80%);
+    height: 100vh;
+}
+.fa-tint {
+    color: rgb(160, 160, 160);
+    position: absolute;
+    top: -20px;
+    animation: fall linear forwards;
+}
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
 
 
 
