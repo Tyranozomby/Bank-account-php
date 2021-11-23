@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["admin"])) {
+    header("Location: admin.php");
+}
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <meta charset="utf-8"/>

@@ -2,9 +2,6 @@
 <meta charset="UTF-8">
 
 <head>
-    <a class="centrer" href="../index.html" title="Accueil">
-        <img src="../icones/accueil.png" width="48" alt=""/>
-    </a>
     <title>Documentation du projet</title>
     <link href="../icones/readme.png" rel="icon" type="image/png"/>
     <link href="../style.css" rel="stylesheet">
@@ -53,8 +50,11 @@
         }, 700);
     </script>
 </head>
-<body>
 
+<body>
+<a class="centrer" href="../index.html" title="Accueil">
+    <img src="../icones/accueil.png" width="50" alt="Icône"/>
+</a>
 <h1 id="bank-account-php">Projet de Simulation de prêt PHP</h1>
 
 <p>Ceci est la documentation de notre projet PHP</p>
@@ -87,8 +87,7 @@
     <div class="box">
         <h3 id="simulation">Simulation</h3>
 
-
-        <p>Il suffit d&#39;aller sur la page simulation.php, ou trois champs sont disponibles</p>
+        <p>Il suffit d&#39;aller sur la page <code>simulation.php</code>, ou trois champs sont disponibles</p>
 
         <ul>
             <li><strong>Capital</strong></li>
@@ -96,33 +95,35 @@
             <li><strong>Taux</strong> (en pourcentage)</li>
         </ul>
 
-
         <p>Il faut ensuite cliquer sur le bouton <strong>Calculer</strong> et le résultat s&#39;affichera en dessous du
-            bouton,
-            en vert.</p>
-
+            bouton, en vert.</p>
 
         <p>Pour voir les 10 dernières simulations, il y a un bouton <strong>Historique</strong> en dessous de l&#39;encadré
-            principal. Il permet de
-            faire apparaitre un pop-up modal contenant l&#39;historique.</p>
+            principal. Il permet de faire apparaitre un pop-up modal contenant l&#39;historique des 10 derniers calculs
+            effectués.</p>
+        <p>Un bouton pour accéder au <strong>README</strong> est aussi disponible à côté du précédent.</p>
     </div>
 
-    <h3 id="partie-administrateur">Partie Administrateur</h3>
-
     <div class="box">
-        <p>Pour se connecter en tant qu&#39;administrateur, il faut aller sur la page <code>adminlogin.php</code>. Il
-            faut
-            ensuite remplir les
-            champs <strong>Login</strong> et <strong>Password</strong> et cliquer sur <em>Connexion</em>.</p>
+        <h3 id="partie-administrateur">Partie Administrateur</h3>
+        <p>Pour se connecter en tant qu&#39;administrateur, il faut aller sur la page <code>adminlogin.php</code>. <br/>
+            Il faut ensuite remplir les champs <strong>Login</strong> et <strong>Password</strong> et cliquer sur <em>Connexion</em>.
+        </p>
 
-        <p>La page <code>admin.php</code> permet de voir l&#39;historique des transactions effectuées depuis le dernier
-            archivage.</p>
+        <p>La page <code>admin.php</code> permet de voir l&#39;historique du log principal ainsi que des archives.<br/>
+            Si <code>logs.csv</code> est sélectionné, les actions suivantes sont proposées:</p>
+        <ul>
+            <li><strong>Archiver les logs</strong></li>
+            <li><strong>Vider les logs</strong></li>
+        </ul>
 
-        <p>Elle permet aussi de vider le fichier d&#39;historique (<code>logs.csv</code>)
-            ou de l&#39;archiver (c&#39;est-à-dire le renommer en un autre nom de fichier disponible, du type
-            <code>logs.csv.2</code>)</p>
+        <p>Dans le cas où une archive est sélectionnée:</p>
+        <ul>
+            <li><strong>Télécharger</strong></li>
+            <li><strong>Supprimer l'archive</strong></li>
+        </ul>
 
-        <p>Un bouton <strong>Déconnexion</strong> est aussi présent</p>
+        <p>Un bouton <strong>Déconnexion</strong> est aussi présent dans tous les cas.</p>
 
     </div>
 </div>
@@ -132,28 +133,25 @@
     <div class="box">
         <h3 id="description">Description</h3>
 
-
         <p>Si dessous la liste des fichiers php et leur utilité</p>
 
         <div class="box">
             <h4 id="simulation-php">simulation.php</h4>
 
-            <p>Page principale qui permet de remplir le formulaire pour la simulation et de consulter l&#39;historique.
-                L&#39;action
-                du
-                formulaire est non déportée et les fonctions permettant de réaliser le calcul sont dans
-                <code>calcul.php</code>
-                et
-                importées
-                via <code>require</code>
-                Les parameters GET utilisés sont</p>
+            <p>Page principale qui permet de remplir le formulaire pour la simulation et de consulter
+                l&#39;historique.<br/>
+                L&#39;action du formulaire est non déportée et les fonctions permettant de réaliser le calcul sont
+                dans <code>calcul.php</code> et importées via <code>require</code>.<br/>
+                Il est impossible d'entrer un autre caractère que des chiffres.
+                Tous les champs sont requis.
+                Les paramètres GET utilisés sont:</p>
 
-            <ul>
-                <li><strong>stat</strong> (pour afficher un message d&#39;erreur)</li>
-                <li><strong>capital</strong></li>
-                <li><strong>mois</strong></li>
-                <li><strong>taux</strong></li>
-            </ul>
+                <ul>
+                    <li><strong>stat</strong> (pour afficher un message d&#39;erreur)</li>
+                    <li><strong>capital</strong></li>
+                    <li><strong>mois</strong></li>
+                    <li><strong>taux</strong></li>
+                </ul>
         </div>
 
 
@@ -270,7 +268,7 @@
 </div>
 <div style="justify-content: center">
     <p id="title" style="transition: color 1s; font-size: 1.2rem">© 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz,
-        Stéphane Lay, Raphael Gruet</p>
+        Stéphane Lay, Raphaël Gruet</p>
 </div>
 </body>
 </html>
