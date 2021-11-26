@@ -13,11 +13,12 @@
             }, 2000);
         }
         function bilel(){
-
+            //todo ?
         }
     </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
+<!--suppress HtmlUnknownAttribute -->
 <body onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" >
 
 <div class="box" data-tilt data-tilt-transition="false">
@@ -27,7 +28,7 @@
         <p class="text" style="background:linear-gradient(to bottom,#e318bc 49%, #1100ff)"> Bilel Medimegh </p>
         <p class="text" style="background:linear-gradient(to bottom,#ff0001 30%, #7500f3)">Eliott Rogeaux</p>
         <p class="text belbaz" style="background:linear-gradient(to bottom,#c2eec2 60%,#b9d216)">
-            <a style="cursor:context-menu"; href=javascript:void(0); onclick=me()>Benjamin Elbaz</a></p>
+            <a href="#" onclick=me()>Benjamin Elbaz</a></p>
         <p class="text" style="background:linear-gradient(to bottom,#e318bc 49%, #f1bc0e);"> Stéphane Lay</p>
         <p class="text" style="background:linear-gradient(to bottom,#f69d3c 50%, #3ea5e0)">Raphael Gruet</p>
         <a class="boutonAccueil" href="#" onclick="window.close();location.href ='../index.html'" title="fermer la fenetre">
@@ -38,13 +39,10 @@
 </div>
 
 <div id="notification">
-
     <div class="container">
         <div class="slot"></div>
-        <button class="test" id="dive">reclique</button>
     </div>
     &#127881; Project Finish ! &#127881;
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
@@ -63,9 +61,6 @@
 
 <div class="bg-image"></div>
 
-
-<script src="./assets/jquery.min.js" type="text/javascript" ></script>
-<script src="./assets/bootstrap.js" type="text/javascript" ></script>
 <script src="neige.js" type="text/javascript" ></script>
 </body>
 

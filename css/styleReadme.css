@@ -1,0 +1,38 @@
+
+body{
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+body, html{
+    margin: 0;
+}
+p,h4{
+    text-align: left;
+}
+a{
+    color:white;
+    text-decoration:none;
+}
+img{
+    max-width:100%;
+    max-height:100%;
+}
+
+.manuels{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+}
+.box{
+    margin: 2rem;
+    width: 40%;
+}
+
+footer{
+    margin-top: 3rem;
+    margin-bottom: 0;
+    background-color: var(--gris);
+    width: 100%;
+}

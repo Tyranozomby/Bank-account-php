@@ -1,6 +1,6 @@
 <?php
 
-require_once "logmanagement.php";
+require_once "../util/logmanagement.php";
 
 //Ouverture du fichier
 session_start();
@@ -27,15 +27,15 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
 <head>
     <title>Admin</title>
-    <link rel="icon" type="image/png" href="icones/login.png"/>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stylePopUp.css">
+    <link rel="icon" type="image/png" href="/icones/login.png"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/stylePopUp.css">
     <link rel="stylesheet" href="admin.css">
 
     <script>
         function download(file) {
             const a = document.createElement("a");
-            a.setAttribute("download", "logs.csv");
+            a.setAttribute("download", "");
             a.setAttribute("href", file);
             document.body.appendChild(a);
             a.click();
@@ -50,7 +50,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
         <?php if ($isarchive) { ?>
             <button type="button" onclick="download('<?php
-            echo "$logs_folder/$selected"; ?>')">Télécharger
+            echo "$web_log_folder/$selected"; ?>')">Télécharger
             </button>
             <input type="submit" class="button" name="supprimer" value="Supprimer l'archive">
         <?php } else { ?>
@@ -73,11 +73,12 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             }
             ?>
         </select>
-    </form>
-    <a class="boutonAccueil" href="index.html" title="Accueil">
-        <img src="icones/accueil.png" width="50" alt=""/> <!--TODO ajouter a la barre -->
-    </a>
 
+    </form>
+
+    <a class="boutonAccueil" href="/index.html" title="Accueil" style="width: fit-content;height: fit-content;margin: auto auto auto 5px">
+        <img src="/icones/accueil.png" width="50" alt=""/>
+    </a>
 </div>
 
 <?php if (!$isarchive) { ?>

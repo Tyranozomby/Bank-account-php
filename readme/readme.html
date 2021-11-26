@@ -3,52 +3,11 @@
 
 <head>
     <title>Documentation du projet</title>
-    <link href="../icones/readme.png" rel="icon" type="image/png"/>
-    <link href="../style.css" rel="stylesheet">
+    <link href="/icones/readme.png" rel="icon" type="image/png"/>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/styleReadme.css" rel="stylesheet">
 
-    <style>
-        body {
-            flex-direction: column;
-            padding-top: 3rem;
-            font-size: large;
-            align-items: center;
-            text-align: left;
-        }
 
-        .box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 2%;
-            width: fit-content;
-        }
-
-        .centrer {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .box h2 {
-            top: -10%;
-        }
-
-        h2, h3, h4 {
-            margin: 0;
-            text-align: center;
-        }
-
-        h1 {
-            color: var(--gris-clair)
-        }
-    </style>
-
-    <script>
-        /*couleur qui change*/
-        setInterval(function () {
-            document.getElementById('title').style.color = '#' + Math.random().toString(16).substr(-6);
-        }, 700);
-    </script>
 </head>
 
 <body>
@@ -57,218 +16,58 @@
 </a>
 <h1 id="bank-account-php">Projet de Simulation de prêt PHP</h1>
 
-<p>Ceci est la documentation de notre projet PHP</p>
+<h2>Ceci est la documentation de notre projet PHP</h2>
+<h2>Le sujet est disponible <a href="Projet%20PHP%202021.pdf">ici</a></h2>
 
-<a href="Projet%20PHP%202021.pdf">Sujet du projet</a>
-
+<div class="manuels">
 <div class="box">
-    <h2 id="table-des-mati-res">Table des matières</h2>
-    <ul>
-        <li>
-            <a href="#utilisation">Utilisation</a>
-            <ul>
-                <li><a href="#simulation">Simulation</a></li>
-                <li><a href="#partie-administrateur">Partie Administrateur</a></li>
-            </ul>
-        </li>
-        <li><a href="#architecture">Architecture</a>
-            <ul>
-                <li><a href="#description">Description</a></li>
-                <li><a href="#schema">Schéma</a></li>
-            </ul>
-        </li>
-        <li><a href="#telecharger">Télécharger le PDF</a>
-        </li>
-    </ul>
+    <h2>Manuel Utilisateur</h2>
+    <h4>Simulation</h4>
+    <p>
+        Pour faire la simulation d'un prêt, il faut cliquer sur le bouton
+        <strong>simulation</strong> de la <a href="/index.html">page d'accueil</a>
+        puis de renter le <strong>Capital</strong>, le nombre de <strong>Mois</strong> ainsi que le <strong>Taux</strong>
+        et enfin cliquer sur <strong>Calculer</strong>
+    </p>
+    <h4>Historique</h4>
+    <p>
+        Les 10 dernières entrées de l'historique sont disponibles via un bouton en dessous de l'encadré
+        <small>(il n'apparait que si l'historique contient des données)</small>
+    </p>
+    <p>
+        Il est possible de charger les valeurs d'une entrée de l'historique dans le formulaire en cliquant sur la valeur de la colonne <strong>Montant</strong>
+    </p>
 </div>
 
-<div class="box">
-    <h2 id="utilisation">Utilisation</h2>
     <div class="box">
-        <h3 id="simulation">Simulation</h3>
-
-        <p>Il suffit d&#39;aller sur la page <code>simulation.php</code>, ou trois champs sont disponibles</p>
-
-        <ul>
-            <li><strong>Capital</strong></li>
-            <li><strong>Mois</strong></li>
-            <li><strong>Taux</strong> (en pourcentage)</li>
-        </ul>
-
-        <p>Il faut ensuite cliquer sur le bouton <strong>Calculer</strong> et le résultat s&#39;affichera en dessous du
-            bouton, en vert.</p>
-
-        <p>Pour voir les 10 dernières simulations, il y a un bouton <strong>Historique</strong> en dessous de l&#39;encadré
-            principal. Il permet de faire apparaitre un pop-up modal contenant l&#39;historique des 10 derniers calculs
-            effectués.</p>
-        <p>Un bouton pour accéder au <strong>README</strong> est aussi disponible à côté du précédent.</p>
-    </div>
-
-    <div class="box">
-        <h3 id="partie-administrateur">Partie Administrateur</h3>
-        <p>Pour se connecter en tant qu&#39;administrateur, il faut aller sur la page <code>adminlogin.php</code>. <br/>
-            Il faut ensuite remplir les champs <strong>Login</strong> et <strong>Password</strong> et cliquer sur <em>Connexion</em>.
+        <h2>Manuel Administrateur</h2>
+        <h4>Connexion</h4>
+        <p>
+            Pour se connecter en tant qu'administrateur, il faut cliquer sur le bouton <strong>connexion</strong> de la <a href="/index.html">page d'accueil</a>.
         </p>
-
-        <p>La page <code>admin.php</code> permet de voir l&#39;historique du log principal ainsi que des archives.<br/>
-            Si <code>logs.csv</code> est sélectionné, les actions suivantes sont proposées:</p>
-        <ul>
-            <li><strong>Archiver les logs</strong></li>
-            <li><strong>Vider les logs</strong></li>
-        </ul>
-
-        <p>Dans le cas où une archive est sélectionnée:</p>
-        <ul>
-            <li><strong>Télécharger</strong></li>
-            <li><strong>Supprimer l'archive</strong></li>
-        </ul>
-
-        <p>Un bouton <strong>Déconnexion</strong> est aussi présent dans tous les cas.</p>
-
-    </div>
-</div>
-
-<div class="box">
-    <h2 id="architecture">Architecture</h2>
-    <div class="box">
-        <h3 id="description">Description</h3>
-
-        <p>Si dessous la liste des fichiers php et leur utilité</p>
-
-        <div class="box">
-            <h4 id="simulation-php">simulation.php</h4>
-
-            <p>Page principale qui permet de remplir le formulaire pour la simulation et de consulter
-                l&#39;historique.<br/>
-                L&#39;action du formulaire est non déportée et les fonctions permettant de réaliser le calcul sont
-                dans <code>calcul.php</code> et importées via <code>require</code>.<br/>
-                Il est impossible d'entrer un autre caractère que des chiffres.
-                Tous les champs sont requis.
-                Les paramètres GET utilisés sont:</p>
-
-                <ul>
-                    <li><strong>stat</strong> (pour afficher un message d&#39;erreur)</li>
-                    <li><strong>capital</strong></li>
-                    <li><strong>mois</strong></li>
-                    <li><strong>taux</strong></li>
-                </ul>
-        </div>
-
-
-        <div class="box">
-            <h4 id="calcul-php">calcul.php</h4>
-
-            <p>Contient les fonctions de calcul de prêt et d&#39;écriture dans les logs</p>
-
-            <h4 id="adminlogin-php">adminlogin.php</h4>
-
-            <p>Page de formulaire de connexion administrateur</p>
-            <p>Elle utilise le paramètre GET <strong>stat</strong> pour afficher un message d&#39;erreur ou de
-                déconnexion
-                réussie
-            </p>
-            <p>Elle envoie les paramètres POST <strong>login</strong> et <strong>password</strong> a la page
-                <code>dologin.php</code> pour réaliser la connexion.</p>
-
-        </div>
-        <div class="box">
-            <h4 id="dologin-php">dologin.php</h4>
-
-            <p>Page qui vérifie les identifiants administrateur</p>
-            <p>Elle utilise les paramètres POST <strong>login</strong> et <strong>password</strong> et les compares
-                a ceux
-                stockés
-                dans <code>admin_pass.csv</code>.</p>
-            <p>Le mot de passe est hashé en sha256.</p>
-            <p>Si la connexion réussie, elle ouvre une session et met le champ de session <code>admin</code> a la
-                valeur
-                <code>admin</code> elle redirige
-                vers <code>admin.php</code></p>
-            <p>Sinon, elle redirige vers <code>adminlogin.php?stat=1</code></p>
-
-        </div>
-        <div class="box">
-            <h4 id="admin-php">admin.php</h4>
-
-            <p>Page d&#39;administration</p>
-            <p>La page vérifie si le champ de session <code>admin</code> vaut bien <code>admin</code> et si non
-                redirige
-                vers
-                <code>adminlogin.php?stat=1</code>
-            </p>
-            <p>La page affiche l&#39;historique contenu dans <code>logs.csv</code> sous forme de tableau</p>
-            <p>Elle contient les boutons <strong>archiver</strong> et <strong>vider</strong> qui redirigent vers
-                <code>processlog.php?archiver</code>
-                et <code>processlog.php?vider</code> respectivement</p>
-            <p>Elle contient aussi un bouton de déconnexion qui redirige vers <code>logout.php</code></p>
-
-        </div>
-        <div class="box">
-            <h4 id="processlog-php">processlog.php</h4>
-
-            <p>Page servant à faire différentes opérations sur les logs (<code>logs.csv</code>)</p>
-            <p>Elle commence par vérifier si l&#39;utilisateur est admin en vérifiant sir le champ de session
-                <code>admin</code>
-                vaut <code>admin</code></p>
-            <p>Si ce n&#39;est pas le cas elle redirige vers <code>adminlogin.php?stat=1</code></p>
-            <p>Ensuite, si le paramètre GET <strong>archiver</strong> est présent, elle archive les logs ou si le
-                paramètre
-                GET
-                <strong>vider</strong> est
-                présent elle les vide.</p>
-            <p>C&#39;est expliqué dans la <a href="#partie-administrateur">partie Administrateur</a></p>
-            <p>Elle redirige ensuite vers <code>admin.php</code></p>
-
-        </div>
-        <div class="box">
-            <h4 id="logout-php">logout.php</h4>
-
-            <p>Page de déconnexion</p>
-            <p>Elle détruit la session actuelle et redirige vers <code>adminlogin.php?stat=2</code></p>
-
-        </div>
-        <div class="box">
-            <h4 id="logs-csv">logs.csv</h4>
-
-            <p>Fichier de logs</p>
-            <p>Format :
-                | Adresse IP du client | Montant | Capital | Nombre de mois | Taux |
-                |----------------------|---------|---------|----------------|------|</p>
-        </div>
-        <div class="box">
-            <h4 id="admin_pass-csv">admin_pass.csv</h4>
-
-            <p>Fichier contenant les identifiants administrateurs</p>
-            <p>Format :
-                | Login | Mot de passe hashé en sha256 |
-                |-------|------------------------------|</p>
-        </div>
+        <h4>Historique</h4>
+        <p>
+            Le fichier d'historique principal est <code>logs.csv</code>. Mais la liste déroulante de droite permet de choisir le fichier à afficher parmi les archives <br/>
+            L'historique entier est affiché avec l'adresse IP ainsi que la date et l'heure de l'envoi du formulaire
+        </p>
+        <h4>Vidage/Archivage/Téléchargement</h4>
+        <p>
+            Le fichier par défaut <code>logs.csv</code> ne peut pas être supprimé, mais il peut être soit vidé ou archivé.<br/>
+            Le vider efface tout son contenu et l'archiver le renomme au lieu de le vider afin d'en garder une sauvegarde<br>
+            Les fichiers d'archive peuvent être supprimés ou téléchargés.
+        </p>
     </div>
 
-    <div class="box">
-        <h3 id="schema">Schéma</h3>
-        <p><img alt="" src="architecture.png" style="width: 80%"></p>
-
-        <a class="centrer" href="/readme/architecture.png" title="Schema" target="_blank">
-            <img src="../icones/oeil.png" width="48"/>
-        </a>
-    </div>
-
-
 </div>
-<div class="box">
-    <h4 id="telecharger">Télécharger le pdf</h4>
-    <br><br>
-    <div class="box">
-        <p>Télécharger le fichier en pdf</p>
-        <a class="centrer" download="readme.pdf" href="/readme/readme.pdf" title="Télécharger le fichier en pdf">
-            <img src="../icones/download.gif" width="48" alt=""/>
-        </a>
-    </div>
+
+<div class="box" style="width: 80%">
+    <img src="architecture.png" alt="Schéma de l'architecture de l'application"/>
 </div>
-<div style="justify-content: center">
-    <p id="title" style="transition: color 1s; font-size: 1.2rem">© 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz,
-        Stéphane Lay, Raphaël Gruet</p>
-</div>
+
+<footer>
+    <h2> © 2021 Bilel Medimegh, Eliott Rogeaux, Benjamin Elbaz,
+        Stéphane Lay, Raphaël Gruet</h2>
+</footer>
+
 </body>
 </html>

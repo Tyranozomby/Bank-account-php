@@ -1,10 +1,12 @@
 const containerSlot = document.querySelector(".slot");
-const btnConfettis = document.querySelector(".belbaz");
-const btnConfettise = document.querySelector(".test");
+const belbazconfettis = document.querySelector(".belbaz");
+const btnConfettis = document.querySelector(".test");
+
 const emojis = ["	\ud83d\ude00","\uD83C\uDF89", "\ud83c\udf82","	\ud83d\udc4f "];
 const emojis1 = ["	\ud83e\udd73","\ud83d\udc4b", "	\ud83d\ude44","\ud83d\ude2f","\ud83d\udc4c"];
+
+belbazconfettis.addEventListener("click", fiesta);
 btnConfettis.addEventListener("click", fiesta);
-btnConfettise.addEventListener("click", fiesta1);
 
 function fiesta() {
 
@@ -18,18 +20,7 @@ function fiesta() {
 
     animateConfettis();
 }
-function fiesta1() {
 
-    if(isTweening()) return;
-
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement("div");
-        confetti.innerText = emojis1[Math.floor(Math.random() * emojis1.length)];
-        containerSlot.appendChild(confetti);
-    }
-
-    animateConfettis();
-}
 
 function animateConfettis() {
 

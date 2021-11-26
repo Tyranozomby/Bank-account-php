@@ -5,7 +5,8 @@ if (count(get_included_files()) == 1) {
     exit();
 }
 
-$logs_folder = "archives";
+$web_log_folder = "/archives";
+$app_log_folder = __DIR__ . "/../archives";
 
 $log_file_name = "logs.csv";
 
@@ -14,8 +15,29 @@ $log_header = array("ip", "date", "Montant", "Capital", "Nombredemois", "Taux");
 
 function get_full_log_file_path(): string
 {
-    global $log_file_name, $logs_folder;
-    return $logs_folder . "/" . $log_file_name;
+    global $log_file_name, $app_log_folder;
+    return $app_log_folder . "/" . $log_file_name;
+}
+
+function ensure_log_file_exists(string $filename = null): string
+{
+    global $log_file_name, $app_log_folder, $log_header;
+    $file = $app_log_folder . "/" . ($filename ?? $log_file_name);
+
+    if (!file_exists($app_log_folder)) {
+        mkdir($app_log_folder);
+    } else if (!is_dir($app_log_folder)) {
+        return false;
+    }
+    if (!file_exists($file)) {
+        $f = fopen($file, 'w');
+        flock($f, LOCK_EX);
+        fputcsv($f, $log_header, ";");
+        flock($f, LOCK_UN);
+        fclose($f);
+        return $file;
+    }
+    return $file;
 }
 
 /**
@@ -26,38 +48,18 @@ function get_full_log_file_path(): string
  */
 function open_log_file(string $file_name = null, bool $read = false)
 {
-    global $log_file_name, $log_header, $logs_folder;
 
-    $file = $logs_folder . "/" . ($file_name ?? $log_file_name);
+    $file = ensure_log_file_exists($file_name);
 
-    if (!file_exists($logs_folder)) {
-        mkdir("archives");
-    } else if (!is_dir($logs_folder)) {
-        return false;
-    }
-
-    // Crée le fichier et ajoute les colonnes s'il n'existe pas
-    if (!file_exists($file)) {
-        $f = fopen($file, 'w' . ($read ? '+' : ''));
-        flock($f, LOCK_EX);
-        fputcsv($f, $log_header, ";");
-        flock($f, LOCK_UN);
-
-
-    } else {
-        $f = fopen($file, 'a' . ($read ? '+' : ''));
-    }
-
-    if ($read) {
-        rewind($f);
-    }
-    return $f;
+    return fopen($file, 'a' . ($read ? '+' : ''));
 }
 
 function get_all_log_files(): array
 {
-    return array_diff(scandir("archives"), array('.', '..'));
+    global $app_log_folder;
+    return array_diff(scandir($app_log_folder), array('.', '..'));
 }
+
 
 function get_logs_data(string $filename = null): false|array
 {
@@ -82,19 +84,20 @@ function get_logs_data(string $filename = null): false|array
 
 /**
  * @param string|null $filename
- * @param null $limit_from_last
+ * @param int $limit_from_last
  * @param int[]| null $columns
  * @param array $col_callbacks
  */
-function print_logs_table(string $filename = null, $limit_from_last = null, array $columns = null, array $col_callbacks = [])
+function print_logs_table(string $filename = null, int $limit_from_last = 0, array $columns = null, array $col_callbacks = [])
 {
     $data = get_logs_data($filename);
     if ($data == false) return;
+    $data = array_splice($data,-$limit_from_last);
     $dataSize = count($data);
 
     $header_display = array("IP", "Date", "Montant (€/mois)", "Capital", "Mois", "Taux");
 
-    $limit_from_last ??= $dataSize;
+
     $columns ??= range(0, count($header_display) - 1);
 
 
@@ -113,9 +116,10 @@ function print_logs_table(string $filename = null, $limit_from_last = null, arra
     </thead>";
 
 
-    for ($i = 0; $i < $limit_from_last; $i++) {
-        if ($dataSize - 1 < $i) break;
-        $ligne = $data[$dataSize - 1 - $i];
+
+
+    for ($i = 0; $i < $dataSize; $i++) {
+        $ligne = $data[$i];
 
         echo "<tr>";
         foreach ($columns as $colnum) {
@@ -124,7 +128,7 @@ function print_logs_table(string $filename = null, $limit_from_last = null, arra
             if ($colnum == 2) $coldata = $coldata . " €";
             if ($colnum == 1) {
                 $datetime = date_create_from_format("U", $coldata);
-                date_timezone_set($datetime,timezone_open("Europe/Paris"));
+                date_timezone_set($datetime, timezone_open("Europe/Paris"));
                 $coldata = date_format($datetime, 'Y-m-d H:i:s');
             }
 

@@ -6,7 +6,7 @@ if (count(get_included_files()) == 1) {
     exit();
 }
 
-require_once "logmanagement.php";
+require_once "../util/logmanagement.php";
 
 function calcul(): float|false|null
 {

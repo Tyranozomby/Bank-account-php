@@ -17,4 +17,4 @@ function rainFall() {
     setTimeout(() => {
 
     }, 600)
-};
+}
