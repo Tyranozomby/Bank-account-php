@@ -12,17 +12,17 @@ if (isset($_GET["archiver"])) {
     $nomFichier = $_GET["archiver"];
     //verifiaction si le fichier existe deja
     if (in_array($nomFichier, get_all_log_files())) {
-        header("Location: admin.php?stat=1#archiverPopUp");
+        header("Location: index.php?stat=1#archiverPopUp");
         exit();
     } else {
         $fullpath = "$app_log_folder/$nomFichier";
-        if(dirname($fullpath) != "archives"){
-            header("Location: admin.php?stat=2#archiverPopUp");
+        if (dirname($fullpath) != "archives") {
+            header("Location: index.php?stat=2#archiverPopUp");
             exit();
         }
         rename(get_full_log_file_path(), $fullpath);
         ensure_log_file_exists();
-        header("Location: admin.php?archive=$nomFichier");
+        header("Location: index.php?archive=$nomFichier");
         exit();
     }
 
@@ -36,4 +36,4 @@ if (isset($_GET["archiver"])) {
     unlink("$app_log_folder/$archive");
 }
 
-header("Location: admin.php");
+header("Location: index.php");

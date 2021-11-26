@@ -92,7 +92,7 @@ function print_logs_table(string $filename = null, int $limit_from_last = 0, arr
 {
     $data = get_logs_data($filename);
     if ($data == false) return;
-    $data = array_splice($data,-$limit_from_last);
+    $data = array_splice($data, -$limit_from_last);
     $dataSize = count($data);
 
     $header_display = array("IP", "Date", "Montant (€/mois)", "Capital", "Mois", "Taux");
@@ -114,8 +114,6 @@ function print_logs_table(string $filename = null, int $limit_from_last = 0, arr
     echo "
         </tr>
     </thead>";
-
-
 
 
     for ($i = 0; $i < $dataSize; $i++) {

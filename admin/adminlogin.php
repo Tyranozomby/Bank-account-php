@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["admin"])) {
-    header("Location: admin.php");
+    header("Location: ./");
 }
 ?>
 
@@ -49,7 +49,7 @@ if (isset($_SESSION["admin"])) {
     </form>
 
     <br/><br/> <br/><br/>
-    <a class="centrer" href="../index.html" title="Accueil">
+    <a class="centrer" href="../" title="Accueil">
         <img src="../icones/accueil.png" width="50" alt=""/>
     </a>
 </div>

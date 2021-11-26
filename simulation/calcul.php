@@ -1,6 +1,6 @@
 <?php
 
-// 404 si pas accédé via simulation.php
+// 404 si pas accédé via index.php
 if (count(get_included_files()) == 1) {
     http_response_code(404);
     exit();
@@ -25,7 +25,7 @@ function calcul(): float|false|null
         return false;
     }
 
-    if($_GET["nombre_mois"] >= 9999999999 || $_GET["capital"]>= 9999999999){
+    if ($_GET["nombre_mois"] >= 9999999999 || $_GET["capital"] >= 9999999999) {
         return false;
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-
 $admin_file_name = "admin_pass.csv";
 
 if (!isset($_POST['login'], $_POST['password']) || $_POST['login'] == "" || $_POST['password'] == "") {
@@ -21,7 +20,7 @@ while ($data = fgetcsv($fp, 1024, ";")) {
         if (hash('sha256', strip_tags($_POST['password'])) == $data[1]) {
             session_start();
             $_SESSION["admin"] = "admin";
-            header('Location: admin.php');
+            header('Location: index.php');
         } else {
             fclose($fp);
             error();
@@ -34,7 +33,6 @@ while ($data = fgetcsv($fp, 1024, ";")) {
 error();
 
 
-/** @noinspection PhpNoReturnAttributeCanBeAddedInspection */
 function error()
 {
     header('Location: adminlogin.php?stat=1');
