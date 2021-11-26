@@ -2,13 +2,11 @@
 
 require "calcul.php";
 
-require_once "../util/logmanagement.php";
-
 $montant = calcul();
 if ($montant === null) {
     unset($montant);
 } else if ($montant === false) {
-    header("Location: simulation.php?err");
+    header("Location: index.php?err");
     exit();
 }
 ?>
@@ -18,9 +16,9 @@ if ($montant === null) {
 <meta charset="utf-8"/>
 
 <head>
-    <link rel="icon" type="image/png" href="/icones/simulation.png"/>
+    <link rel="icon" type="image/png" href="../icones/simulation.png"/>
     <title>Formulaire de simulation</title>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
 
     <script type="text/javascript">
         function loadData(elem) {
@@ -94,12 +92,11 @@ if ($montant === null) {
 
         <?php
         if (file_exists(get_full_log_file_path())) {
-            /** @noinspection HtmlUnknownAnchorTarget */
             echo "<a class='popButton' href='#logs'>Historique</a>";
         }
         ?>
-        <a class="popButton" href='/readme/readme.html'>Readme</a>
-        <link rel="stylesheet" href="/css/stylePopUp.css">
+        <a class="popButton" href='../readme/'>Readme</a>
+        <link rel="stylesheet" href="../css/stylePopUp.css">
         <div id="logs" class="modal">
             <div class="modal_content">
                 <h1>Historique</h1>
@@ -113,8 +110,8 @@ if ($montant === null) {
         </div>
     </div>
 
-    <a class="centrer" href="/index.html" title="Accueil" style="display:block;margin-top: 5%">
-        <img src="/icones/accueil.png" width="50" alt=""/>
+    <a class="centrer" href="../" title="Accueil" style="display:block;margin-top: 5%">
+        <img src="../icones/accueil.png" width="50" alt=""/>
     </a>
 
 </div>

@@ -27,10 +27,10 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
 <head>
     <title>Admin</title>
-    <link rel="icon" type="image/png" href="/icones/login.png"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/stylePopUp.css">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" type="image/png" href="../icones/login.png"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/stylePopUp.css">
+    <link rel="stylesheet" href="../css/admin.css">
 
     <script>
         function download(file) {
@@ -76,8 +76,9 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
     </form>
 
-    <a class="boutonAccueil" href="/index.html" title="Accueil" style="width: fit-content;height: fit-content;margin: auto auto auto 5px">
-        <img src="/icones/accueil.png" width="50" alt=""/>
+    <a class="boutonAccueil" href="../" title="Accueil"
+       style="width: fit-content;height: fit-content;margin: auto auto auto 5px">
+        <img src="../icones/accueil.png" width="50" alt="accueil"/>
     </a>
 </div>
 
