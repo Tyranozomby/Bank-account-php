@@ -54,7 +54,9 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
             </button>
             <input type="submit" class="button" name="supprimer" value="Supprimer l'archive">
         <?php } else { ?>
-            <button type="button" onclick="location.href='#archiverPopUp'">Archiver les logs</button>
+            <button type="button" onclick="location.href='#archiverPopUp'" <?php if (is_log_empty()) echo "disabled" ?>>
+                Archiver les logs
+            </button>
             <input type="submit" class="button" name="vider" value="Vider les logs">
         <?php } ?>
 

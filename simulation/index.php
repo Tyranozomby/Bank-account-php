@@ -91,7 +91,8 @@ if ($montant === null) {
     <div style="margin-top: 1.2rem;">
 
         <?php
-        if (file_exists(get_full_log_file_path())) {
+
+        if (file_exists(get_full_log_file_path()) and (!is_log_empty())) {
             echo "<a class='popButton' href='#logs'>Historique</a>";
         }
         ?>

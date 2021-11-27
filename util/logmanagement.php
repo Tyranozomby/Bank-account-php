@@ -48,7 +48,6 @@ function ensure_log_file_exists(string $filename = null): string
  */
 function open_log_file(string $file_name = null, bool $read = false)
 {
-
     $file = ensure_log_file_exists($file_name);
 
     return fopen($file, 'a' . ($read ? '+' : ''));
@@ -139,4 +138,25 @@ function print_logs_table(string $filename = null, int $limit_from_last = 0, arr
     }
     echo "
 </table>";
+}
+
+/**
+ * @return bool is there is at least one line of data in the log file
+ */
+function is_log_empty(): bool
+{
+    global $log_file_name, $app_log_folder;
+
+    $file = fopen($app_log_folder . "/" . $log_file_name, "r");
+    $count = 0;
+    $empty = true;
+    while (!feof($file) and $empty) {
+        fgetcsv($file);
+        $count++;
+        if ($count > 2)
+            $empty = false;
+    }
+
+    fclose($file);
+    return $empty;
 }
