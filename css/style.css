@@ -6,7 +6,6 @@
     --bleu-table: #6495ed;
     --deg1: #da2093;
     --deg2: #092eef;
-
     --error: #be0000;
     --success: limegreen;
 }
@@ -31,12 +30,9 @@ h1 {
     font-size: 1.3rem;
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
-
     margin-top: 5rem;
     padding: 3rem;
-
     border: 6px solid var(--gris);
-
     border-radius: 40px;
 }
 
