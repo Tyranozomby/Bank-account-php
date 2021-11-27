@@ -79,7 +79,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
     </form>
 
     <a class="boutonAccueil" href="../" title="Accueil"
-       style="width: fit-content;height: fit-content;margin: auto auto auto 5px">
+       style="display: flex; margin: auto">
         <img src="../icones/accueil.png" width="50" alt="accueil"/>
     </a>
 </div>
