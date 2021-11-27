@@ -55,5 +55,3 @@ if (isset($_SESSION["admin"])) {
 </div>
 </body>
 </html>
-
-

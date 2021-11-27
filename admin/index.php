@@ -50,7 +50,7 @@ if (isset($_GET["archive"]) and in_array($_GET["archive"], $archives)) {
 
         <?php if ($isarchive) { ?>
             <button type="button" onclick="download('<?php
-            echo "$web_log_folder/$selected"; ?>')">Télécharger
+            echo "../archives/$selected"; ?>')">Télécharger
             </button>
             <input type="submit" class="button" name="supprimer" value="Supprimer l'archive">
         <?php } else { ?>

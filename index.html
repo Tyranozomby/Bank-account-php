@@ -5,6 +5,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/styleAccueil.css" rel="stylesheet">
     <link href="icones/accueil.png" rel="icon" type="image/png"/>
+
     <script>
         /*FAIRE DES FLOCONS QUI BOUGENT
             Source :  http://www.editeurjavascript.com
@@ -65,21 +66,6 @@
     </script>
 
     <script>
-        /* CLIC Droit sur la page index.html */
-        if (document.addEventListener) { // IE >= 9; other browsers
-            document.addEventListener('contextmenu', function (e) {
-                window.open("savoirplus/", " ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar=no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
-                e.preventDefault();
-            }, false);
-        } else { // IE < 9
-            document.attachEvent('oncontextmenu', function () {
-                window.open("savoirplus/", " ", "resizable=no, menubar=no, status=no, scrollbars=no, menubar=no, width=screen.width/2, height=screen.height/2, centerscreen=yes");
-                window.event.returnValue = false;
-            });
-        }
-    </script>
-
-    <script>
         /*couleur qui change*/
         setInterval(function () {
             document.getElementById('colorChange').style.color = '#' + Math.random().toString(16).substr(-6);
@@ -105,5 +91,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 </body>
 </html>
-
-

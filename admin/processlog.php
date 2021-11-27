@@ -10,21 +10,21 @@ if ($_SESSION["admin"] != "admin") {
 if (isset($_GET["archiver"])) {
 
     $nomFichier = $_GET["archiver"];
-    //verifiaction si le fichier existe deja
+    // Vérification si le fichier existe deja
     if (in_array($nomFichier, get_all_log_files())) {
         header("Location: index.php?stat=1#archiverPopUp");
-        exit();
     } else {
-        $fullpath = "$app_log_folder/$nomFichier";
-        if (dirname($fullpath) != "archives") {
+        $fullpath = "../archives/$nomFichier";
+        if (dirname($fullpath) != "../archives") {
+            echo "here";
             header("Location: index.php?stat=2#archiverPopUp");
             exit();
         }
         rename(get_full_log_file_path(), $fullpath);
         ensure_log_file_exists();
         header("Location: index.php?archive=$nomFichier");
-        exit();
     }
+    exit();
 
 
 } else if (isset($_GET["vider"])) {

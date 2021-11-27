@@ -38,4 +38,3 @@ function error()
     header('Location: adminlogin.php?stat=1');
     exit();
 }
-
