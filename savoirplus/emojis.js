@@ -1,11 +1,6 @@
 const containerSlot = document.querySelector(".slot");
-const belbazconfettis = document.querySelector(".belbaz");
-const btnConfettis = document.querySelector(".test");
 
 const emojis = ["	\ud83d\ude00", "\uD83C\uDF89", "\ud83c\udf82", "	\ud83d\udc4f "];
-
-belbazconfettis.addEventListener("click", fiesta);
-btnConfettis.addEventListener("click", fiesta);
 
 function fiesta() {
 
