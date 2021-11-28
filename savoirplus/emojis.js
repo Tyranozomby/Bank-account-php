@@ -15,7 +15,6 @@ function fiesta() {
         confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
         containerSlot.appendChild(confetti);
     }
-
     animateConfettis();
 }
 

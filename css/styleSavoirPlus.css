@@ -85,6 +85,10 @@ p {
     -webkit-background-clip: text !important;
 }
 
+a {
+    cursor: pointer;
+}
+
 .boutonAccueil {
     justify-content: center;
     display: flex;
@@ -152,6 +156,12 @@ p {
     animation: fall linear forwards;
 }
 
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
+
 .matrix {
     color: rgb(0, 159, 51);
     text-shadow: #544504 1px 0 10px;
@@ -161,12 +171,10 @@ p {
     animation: fall linear forwards;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(105vh);
-    }
-}
-
-a {
-    cursor: pointer;
+.chat {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    filter: blur(1px);
+    transition: all 1s;
 }
