@@ -1,88 +1,37 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8"/>
-    <title>En savoir plus &#9786;</title>
+    <title>Cliquez sur les noms &#9786;</title>
     <link href="../icones/savoirplus.png" rel="icon" type="image/png"/>
+
     <link href="../css/stylesavoirplus.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
 
-    <script>
-        const shuffle = str => [...str].sort(_ => Math.random() - .5).join('');
-        const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-        const factorial = n => n < 0 || Boolean(n % 1) ? undefined : n === 0 ? 1 : factorial(n - 1) * n;
-
-        function belbaz() {
-            const notif = document.getElementById('notification');
-            notif.firstChild.nodeValue = String.fromCodePoint(127881) + " Project Finished ! " + String.fromCodePoint(127881);
-            notif.classList.add("show");
-            setTimeout(() => {
-                notif.classList.remove("show");
-            }, 2000);
-            fiesta();
-        }
-
-
-        function rgruet() {
-            let turn = document.getElementById("turn");
-            if (turn.style.transform === "rotate(180deg)")
-                turn.style.transform = "";
-            else
-                turn.style.transform = "rotate(180deg)";
-        }
-
-
-        const combi_total = (factorial(8) / factorial(2)) * (factorial(3));
-        let combi_done = [];
-
-        function slay(a) {
-            let text = a.firstChild.nodeValue;
-            let split = text.split(" ");
-            text = capitalize(shuffle(split[0])) + " " + capitalize(shuffle(split[1]));
-            a.firstChild.nodeValue = text;
-
-            const notif = document.getElementById("notification");
-
-            if (combi_done.includes(text)) {
-                notif.firstChild.nodeValue = "Combinaison déjà trouvée ! Quelle chance " + String.fromCodePoint(0x1F340);
-            } else {
-                combi_done.push(text);
-                notif.firstChild.nodeValue = "Nouvelle combinaison ! " +
-                    combi_done.length + "/" + combi_total;
-            }
-
-            notif.classList.add("show");
-        }
-
-        document.addEventListener('mousedown', function (event) {
-            if (event.detail > 1) {
-                event.preventDefault();
-            }
-        }, false);
-
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="emojis.js"></script>
+    <script src="pluie.js"></script>
+    <script src="prenoms.js"></script>
 
 </head>
 <body>
-<div class="bg-image"></div>
-<script src="pluie.js"></script>
 <div id="turn" style="transition: 1s">
     <div class="box" data-tilt data-tilt-transition="false" data-tilt-full-page-listening>
 
         <div class="innerbox">
             <h1 class="titre">© Projet PHP 2021</h1>
-            <p class="text" style="background:linear-gradient(to bottom,#e318bc 49%, #1100ff)">
+            <p style="background:linear-gradient(to bottom,#e318bc 49%, #1100ff)">
                 <a onclick="bmedimeg()">Bilel Medimegh</a>
             </p>
-            <p class="text" style="background:linear-gradient(to bottom,#ff0001 30%, #7500f3)">
+            <p style="background:linear-gradient(to bottom,#ff0001 30%, #7500f3)">
                 <a onclick="erogeaux()">Eliott Rogeaux</a>
             </p>
-            <p class="text" style="background:linear-gradient(to bottom,#c2eec2 60%,#b9d216)">
+            <p style="background:linear-gradient(to bottom,#c2eec2 60%,#b9d216)">
                 <a onclick="belbaz()">Benjamin Elbaz</a>
             </p>
-            <p class="text" style="background:linear-gradient(to bottom,#e318bc 49%, #f1bc0e);">
+            <p style="background:linear-gradient(to bottom,#e318bc 49%, #f1bc0e);">
                 <a onclick="slay(this)">Stéphane Lay</a>
             </p>
-            <p class="text" style="background:linear-gradient(to bottom,#f69d3c 50%, #3ea5e0)">
+            <p style="background:linear-gradient(to bottom,#f69d3c 50%, #3ea5e0)">
                 <a onclick="rgruet()">Raphaël Gruet</a>
             </p>
 
@@ -97,13 +46,10 @@
 <div id="notification">
     Useless but useful text
     <div class="container">
-        <div class="slot"></div>
+        <div id="emojis"></div>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-<script src="emojis.js"></script>
-
 </body>
 </html>

@@ -71,9 +71,9 @@ if ($montant === null) {
                     echo "<input type='number' id='nombre_mois' name='nombre_mois' min='1' step='1' value='" . $_GET["nombre_mois"] . "' required>";
                     echo "<input type='number' id='taux' name='taux' min='0' max='100' step='0.01' value='" . $_GET["taux"] . "' required>";
                 } else { ?>
-                    <input type='number' id='capital' name='capital' step='0.01' min='0' required>
+                    <input type='number' id='capital' name='capital' step='0.01' min='0.01' required>
                     <input type='number' id='nombre_mois' name='nombre_mois' step='1' min='1' required>
-                    <input type='number' id='taux' name='taux' step='0.01' min='0' max='100' required>
+                    <input type='number' id='taux' name='taux' step='0.01' min='0.01' max='100' required>
                     <?php
                 }
                 ?>

@@ -14,6 +14,7 @@ body {
     overflow: hidden;
     margin: 0;
     text-align: center;
+    user-select: none;
 }
 
 .box {
@@ -25,6 +26,7 @@ body {
     border: 7px solid rgb(224, 221, 221);
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    will-change: transform !important;
 }
 
 .box::before, .box::after {
@@ -74,7 +76,7 @@ body {
     padding-bottom: 2.2rem;
 }
 
-.text {
+p {
     text-align: center;
     font-family: arial, sans-serif;
     font-size: 1.7rem;
@@ -122,28 +124,12 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.test {
-    width: 110px;
-    height: 110px;
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    font-size: 30px;
-}
-
-.slot {
+#emojis {
     position: relative;
     perspective: 1000px;
 }
 
-.slot div {
+#emojis div {
     width: 35px;
     height: 950px;
     border-radius: 50%;
@@ -151,7 +137,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    user-select: none;
 }
 
 
@@ -160,10 +145,19 @@ body {
     height: 100vh;
 }
 
-.fa-tint {
+.fall {
     color: rgb(160, 160, 160);
     position: absolute;
     top: -20px;
+    animation: fall linear forwards;
+}
+
+.matrix {
+    color: rgb(0, 159, 51);
+    text-shadow: #544504 1px 0 10px;
+    position: absolute;
+    top: -20px;
+    font-size: 20px !important;
     animation: fall linear forwards;
 }
 
