@@ -7,14 +7,20 @@
     <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
 
     <script>
+        const shuffle = str => [...str].sort(_ => Math.random() - .5).join('');
+        const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        const factorial = n => n < 0 || Boolean(n % 1) ? undefined : n === 0 ? 1 : factorial(n - 1) * n;
+
         function belbaz() {
-            const toast = document.querySelector('#notification');
-            toast.classList.add("show");
+            const notif = document.getElementById('notification');
+            notif.firstChild.nodeValue = String.fromCodePoint(127881) + " Project Finished ! " + String.fromCodePoint(127881);
+            notif.classList.add("show");
             setTimeout(() => {
-                toast.classList.remove("show");
+                notif.classList.remove("show");
             }, 2000);
             fiesta();
         }
+
 
         function rgruet() {
             let turn = document.getElementById("turn");
@@ -23,6 +29,36 @@
             else
                 turn.style.transform = "rotate(180deg)";
         }
+
+
+        const combi_total = (factorial(8) / factorial(2)) * (factorial(3));
+        let combi_done = [];
+
+        function slay(a) {
+            let text = a.firstChild.nodeValue;
+            let split = text.split(" ");
+            text = capitalize(shuffle(split[0])) + " " + capitalize(shuffle(split[1]));
+            a.firstChild.nodeValue = text;
+
+            const notif = document.getElementById("notification");
+
+            if (combi_done.includes(text)) {
+                notif.firstChild.nodeValue = "Combinaison déjà trouvée ! Quelle chance " + String.fromCodePoint(0x1F340);
+            } else {
+                combi_done.push(text);
+                notif.firstChild.nodeValue = "Nouvelle combinaison ! " +
+                    combi_done.length + "/" + combi_total;
+            }
+
+            notif.classList.add("show");
+        }
+
+        document.addEventListener('mousedown', function (event) {
+            if (event.detail > 1) {
+                event.preventDefault();
+            }
+        }, false);
+
     </script>
 
 </head>
@@ -44,13 +80,13 @@
                 <a onclick="belbaz()">Benjamin Elbaz</a>
             </p>
             <p class="text" style="background:linear-gradient(to bottom,#e318bc 49%, #f1bc0e);">
-                <a onclick="slay()">Stéphane Lay</a>
+                <a onclick="slay(this)">Stéphane Lay</a>
             </p>
             <p class="text" style="background:linear-gradient(to bottom,#f69d3c 50%, #3ea5e0)">
                 <a onclick="rgruet()">Raphaël Gruet</a>
             </p>
 
-            <a class="boutonAccueil" onclick="window.close();location.href ='../'"
+            <a class="boutonAccueil" onclick="location.href ='../'"
                title="Retour à l'accueil">
                 <img alt="" src="../icones/accueil.png" width="35"/>
             </a>
@@ -59,10 +95,10 @@
 </div>
 
 <div id="notification">
+    Useless but useful text
     <div class="container">
         <div class="slot"></div>
     </div>
-    &#127881; Project Finished ! &#127881;
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
