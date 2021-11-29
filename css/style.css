@@ -12,7 +12,7 @@
 
 body {
     display: flex;
-    padding-top: 8rem;
+    padding-top: 1rem;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -23,6 +23,7 @@ body {
 h1 {
     font-weight: bold;
     font-size: xxx-large;
+    padding-top: 5rem;
 }
 
 .box {
@@ -30,7 +31,6 @@ h1 {
     font-size: 1.3rem;
     background: var(--gris);
     box-shadow: 50px 50px 40px -6px var(--shadow);
-    margin-top: 5rem;
     padding: 3rem;
     border: 6px solid var(--gris);
     border-radius: 40px;

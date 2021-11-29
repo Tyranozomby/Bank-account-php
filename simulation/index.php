@@ -111,8 +111,8 @@ if ($montant === null) {
         </div>
     </div>
 
-    <a class="centrer" href="../" title="Accueil" style="display:block; margin: 5% auto auto;">
-        <img src="../icones/accueil.png" width="50" alt=""/>
+    <a class="centrer" href="../" title="Accueil">
+        <img src="../icones/accueil.png" style="margin-top: 5%" width="50" alt=""/>
     </a>
 
 </div>
