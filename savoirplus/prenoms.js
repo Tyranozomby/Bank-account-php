@@ -54,7 +54,7 @@ function slay(a) {
         popup.firstChild.nodeValue = String.fromCodePoint(0x1F340) + " Permutation déjà trouvée ! Quelle chance " + String.fromCodePoint(0x1F340);
     } else {
         combi_done.push(text);
-        popup.firstChild.nodeValue = String.fromCodePoint(0x3A9) + " Nouvelle combinaison ! " + combi_done.length + "/" + combi_total + " " + String.fromCodePoint(0x3A9);
+        popup.firstChild.nodeValue = String.fromCodePoint(0x3A9) + " Nouvelle association ! " + combi_done.length + "/" + combi_total + " " + String.fromCodePoint(0x3A9);
     }
 
     popup.classList.add("show");
